@@ -1080,7 +1080,6 @@
 
   .trip-card.active-trip {
     border-color: var(--gold);
-    border-top: 2px solid var(--gold);
   }
 
   .trip-card-header {
@@ -2705,6 +2704,64 @@
     margin-top: 20px;
     opacity: 1;
   }
+
+  /* ── Trip card thumbnail strip ── */
+  .trip-thumb-strip {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--sky), var(--teal-lt));
+    display: flex;
+  }
+
+  .trip-thumb-strip.has-photos {
+    background: #000;
+  }
+
+  .trip-thumb-img {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s;
+  }
+
+  .trip-thumb-img + .trip-thumb-img {
+    border-left: 2px solid var(--surface);
+  }
+
+  .trip-thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: rgba(13,148,136,0.2);
+  }
+
+  .trip-thumb-count {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .trip-card.active-trip .trip-thumb-strip {
+    border-top: 3px solid var(--gold);
+  }
+
 </style>
 </head>
 <body>
@@ -3491,7 +3548,21 @@
       `<span class="species-pill">${s}</span>`).join('') +
       (speciesList.length > 5 ? `<span class="species-pill">+${speciesList.length-5}</span>` : '');
 
+    // Build thumbnail strip from first 3 catches that have photos
+    const photoCatches = tripCatches.filter(c => c.photo);
+    const thumbPhotos  = photoCatches.slice(0, 3);
+    const extraCount   = tripCatches.length - thumbPhotos.length;
+    const thumbHtml = thumbPhotos.length > 0
+      ? `<div class="trip-thumb-strip has-photos">
+          ${thumbPhotos.map(c => `<img class="trip-thumb-img" src="${c.photo}" alt="${c.species}">`).join('')}
+          ${photoCatches.length > 3 ? `<div class="trip-thumb-count">+${photoCatches.length - 3} more</div>` : ''}
+        </div>`
+      : `<div class="trip-thumb-strip">
+          <div class="trip-thumb-placeholder">⛵</div>
+        </div>`;
+
     return `<div class="trip-card ${isActive ? 'active-trip' : ''}" onclick="viewTrip(${t.id})">
+      ${thumbHtml}
       <div class="trip-card-header">
         <div class="trip-card-top">
           <div class="trip-name">${t.name}</div>
