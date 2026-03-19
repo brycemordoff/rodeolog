@@ -1431,6 +1431,163 @@
 
   .btn-add-spot:hover { background: rgba(212,168,50,0.25); }
 
+  /* ── Cache area button ── */
+  .btn-cache-area {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    padding: 7px 16px;
+    border-radius: 2px;
+    border: 1px solid var(--foam);
+    background: rgba(77,184,232,0.1);
+    color: var(--foam);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .btn-cache-area:hover { background: rgba(77,184,232,0.22); }
+  .btn-cache-area:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ── Weather widget ── */
+  .weather-widget {
+    background: rgba(10,22,40,0.85);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--wave);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.4s ease;
+  }
+
+  .weather-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .weather-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    color: var(--foam);
+  }
+
+  .btn-weather-refresh {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--line);
+    padding: 4px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-weather-refresh:hover { color: var(--foam); border-color: var(--foam); }
+
+  .weather-empty {
+    text-align: center;
+    padding: 8px 0 4px;
+  }
+
+  .btn-weather-locate {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--foam);
+    background: rgba(77,184,232,0.1);
+    border: 1px solid rgba(77,184,232,0.3);
+    padding: 8px 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-weather-locate:hover { background: rgba(77,184,232,0.2); }
+
+  .weather-loading {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .weather-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .weather-cell {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .weather-cell-icon { font-size: 1.2rem; line-height: 1; margin-bottom: 2px; }
+
+  .weather-cell-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--bone);
+    line-height: 1;
+  }
+
+  .weather-cell-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .weather-cell-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: rgba(122,155,176,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .weather-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: rgba(122,155,176,0.4);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .weather-alert {
+    background: rgba(192,90,42,0.12);
+    border: 1px solid rgba(192,90,42,0.3);
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: #e0884a;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
   #mapContainer {
     width: 100%;
     height: 480px;
@@ -2193,6 +2350,25 @@
   <!-- ══ TRIPS TAB ══════════════════════════════════════════ -->
   <div class="tab-view active" id="tab-trips">
 
+    <!-- Weather Widget -->
+    <div class="weather-widget" id="weatherWidget">
+      <div class="weather-header">
+        <div class="weather-title">🌊 Current Conditions</div>
+        <button class="btn-weather-refresh" onclick="fetchWeather()" id="btnWeatherRefresh">Refresh</button>
+      </div>
+      <div id="weatherContent">
+        <div class="weather-loading" id="weatherLoading" style="display:none">
+          <span class="ai-spinner active" style="display:inline-block;margin-right:8px"></span>
+          Fetching conditions…
+        </div>
+        <div class="weather-empty" id="weatherEmpty">
+          <button class="btn-weather-locate" onclick="fetchWeather()">📍 Get conditions for my location</button>
+        </div>
+        <div class="weather-grid" id="weatherGrid" style="display:none"></div>
+        <div class="weather-meta" id="weatherMeta"></div>
+      </div>
+    </div>
+
     <!-- New Trip Form -->
     <div class="new-trip-section" id="newTripSection" style="display:none">
       <div class="section-title">New Trip</div>
@@ -2524,8 +2700,22 @@
           <option value="trip">Color by Trip</option>
         </select>
       </div>
-      <!-- Add spot -->
-      <button class="btn-add-spot" onclick="openAddSpot()">+ Save Spot</button>
+      <!-- Add spot + Cache -->
+      <div style="display:flex;gap:8px;flex-shrink:0">
+        <button class="btn-add-spot" onclick="openAddSpot()">+ Save Spot</button>
+        <button class="btn-cache-area" id="btnCacheArea" onclick="cacheMapArea()">📥 Cache Area</button>
+      </div>
+    </div>
+
+    <!-- Cache progress bar -->
+    <div id="cacheProgress" style="display:none;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--foam);text-transform:uppercase" id="cacheStatus">Caching tiles…</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted)" id="cacheCount"></span>
+      </div>
+      <div style="height:4px;background:rgba(77,184,232,0.15);border-radius:2px;overflow:hidden">
+        <div id="cacheBar" style="height:100%;background:var(--foam);width:0%;transition:width 0.3s;border-radius:2px"></div>
+      </div>
     </div>
 
     <!-- Map -->
@@ -4095,9 +4285,11 @@ Return ONLY a valid JSON object with these fields (use null if unknown or not vi
       leafletMap = L.map('mapContainer', { zoomControl: true, attributionControl: true })
                    .setView([33.5, -118.3], 8);
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap © CARTO',
-        subdomains: 'abcd', maxZoom: 19
+      // Use OpenStreetMap tiles — supports caching for offline use
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+        crossOrigin: true,
       }).addTo(leafletMap);
 
       // Click map to pre-fill spot coords
@@ -4394,31 +4586,281 @@ Return ONLY a valid JSON object with these fields (use null if unknown or not vi
     e.target.value = '';
   }
 
-  // ── Service Worker (offline support) ─────────────────────
+  // ── Service Worker (offline tiles + app caching) ─────────
   if ('serviceWorker' in navigator) {
     const swCode = `
-      const CACHE = 'offshore-log-v1';
-      const PRECACHE = []; // dynamic single-file app — cache on first fetch
+      const APP_CACHE  = 'offshore-app-v2';
+      const TILE_CACHE = 'offshore-tiles-v1';
+      const TILE_HOST  = 'tile.openstreetmap.org';
+
       self.addEventListener('install', e => self.skipWaiting());
-      self.addEventListener('activate', e => clients.claim());
+      self.addEventListener('activate', e => { clients.claim(); });
+
       self.addEventListener('fetch', e => {
         if (e.request.method !== 'GET') return;
+        const url = new URL(e.request.url);
+
+        // Map tiles — cache-first with long TTL
+        if (url.hostname === TILE_HOST) {
+          e.respondWith(
+            caches.open(TILE_CACHE).then(cache =>
+              cache.match(e.request).then(cached => {
+                if (cached) return cached;
+                return fetch(e.request).then(resp => {
+                  if (resp.ok) cache.put(e.request, resp.clone());
+                  return resp;
+                }).catch(() => cached);
+              })
+            )
+          );
+          return;
+        }
+
+        // App resources — network-first, fall back to cache
         e.respondWith(
-          caches.open(CACHE).then(cache =>
-            cache.match(e.request).then(cached => {
-              const fresh = fetch(e.request).then(resp => {
-                if (resp.ok) cache.put(e.request, resp.clone());
-                return resp;
-              }).catch(() => cached);
-              return cached || fresh;
-            })
+          caches.open(APP_CACHE).then(cache =>
+            fetch(e.request).then(resp => {
+              if (resp.ok) cache.put(e.request, resp.clone());
+              return resp;
+            }).catch(() => cache.match(e.request))
           )
         );
+      });
+
+      // Listen for cache-area messages from the app
+      self.addEventListener('message', e => {
+        if (e.data?.type === 'CACHE_TILES') {
+          const { urls } = e.data;
+          caches.open(TILE_CACHE).then(cache => {
+            let done = 0;
+            const total = urls.length;
+            const results = urls.map(url =>
+              fetch(url, { mode: 'cors' })
+                .then(resp => { if (resp.ok) cache.put(url, resp); })
+                .catch(() => {})
+                .finally(() => {
+                  done++;
+                  e.source?.postMessage({ type: 'CACHE_PROGRESS', done, total });
+                })
+            );
+            Promise.all(results).then(() => {
+              e.source?.postMessage({ type: 'CACHE_DONE', total });
+            });
+          });
+        }
       });
     `;
     const blob = new Blob([swCode], { type: 'application/javascript' });
     const swUrl = URL.createObjectURL(blob);
-    navigator.serviceWorker.register(swUrl).catch(() => {});
+    navigator.serviceWorker.register(swUrl).then(reg => {
+      window._swReg = reg;
+    }).catch(() => {});
+
+    // Listen for progress messages from SW
+    navigator.serviceWorker.addEventListener('message', e => {
+      if (e.data?.type === 'CACHE_PROGRESS') {
+        const pct = Math.round((e.data.done / e.data.total) * 100);
+        document.getElementById('cacheBar').style.width = pct + '%';
+        document.getElementById('cacheCount').textContent = e.data.done + ' / ' + e.data.total;
+      }
+      if (e.data?.type === 'CACHE_DONE') {
+        document.getElementById('cacheStatus').textContent = '✓ ' + e.data.total + ' tiles cached — map works offline';
+        document.getElementById('cacheBar').style.background = '#4daa78';
+        setTimeout(() => {
+          document.getElementById('cacheProgress').style.display = 'none';
+          document.getElementById('btnCacheArea').disabled = false;
+          document.getElementById('btnCacheArea').textContent = '📥 Cache Area';
+        }, 3000);
+      }
+    });
+  }
+
+  // ── Cache Map Area ────────────────────────────────────────
+  function cacheMapArea() {
+    if (!leafletMap) { toast('Open the map first'); return; }
+    if (!navigator.serviceWorker?.controller) {
+      toast('⚠ Service worker not ready — reload app and try again'); return;
+    }
+
+    const bounds = leafletMap.getBounds();
+    const minZoom = Math.max(1,  leafletMap.getZoom() - 2);
+    const maxZoom = Math.min(14, leafletMap.getZoom() + 3);
+
+    const urls = [];
+    for (let z = minZoom; z <= maxZoom; z++) {
+      const nw = L.CRS.EPSG3857.latLngToPoint(bounds.getNorthWest(), z).divideBy(256).floor();
+      const se = L.CRS.EPSG3857.latLngToPoint(bounds.getSouthEast(), z).divideBy(256).floor();
+      for (let x = nw.x; x <= se.x; x++) {
+        for (let y = nw.y; y <= se.y; y++) {
+          urls.push(`https://tile.openstreetmap.org/${z}/${x}/${y}.png`);
+        }
+      }
+    }
+
+    if (urls.length > 1500) {
+      toast('⚠ Area too large — zoom in more and try again'); return;
+    }
+
+    document.getElementById('cacheProgress').style.display = 'block';
+    document.getElementById('cacheStatus').textContent = 'Caching ' + urls.length + ' tiles…';
+    document.getElementById('cacheBar').style.width = '0%';
+    document.getElementById('cacheBar').style.background = 'var(--foam)';
+    document.getElementById('cacheCount').textContent = '';
+    document.getElementById('btnCacheArea').disabled = true;
+    document.getElementById('btnCacheArea').textContent = 'Caching…';
+
+    navigator.serviceWorker.controller.postMessage({ type: 'CACHE_TILES', urls });
+  }
+
+  // ── Weather & Marine Conditions ───────────────────────────
+  let weatherCoords = null;
+
+  function fetchWeather() {
+    document.getElementById('weatherEmpty').style.display   = 'none';
+    document.getElementById('weatherGrid').style.display    = 'none';
+    document.getElementById('weatherLoading').style.display = 'flex';
+    document.getElementById('weatherMeta').textContent      = '';
+
+    if (!navigator.geolocation) {
+      showWeatherError('GPS not available on this device');
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(pos => {
+      weatherCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+      loadWeatherData(weatherCoords.lat, weatherCoords.lng);
+    }, () => {
+      // Fall back to SoCal default
+      loadWeatherData(33.5, -118.3);
+    }, { timeout: 8000 });
+  }
+
+  async function loadWeatherData(lat, lng) {
+    try {
+      // Open-Meteo Marine API — free, no key needed
+      const marineUrl = `https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lng}` +
+        `&hourly=wave_height,wave_direction,wave_period,swell_wave_height,swell_wave_period` +
+        `&current=wave_height,wave_direction,wave_period,swell_wave_height` +
+        `&wind_speed_unit=mph&length_unit=imperial&timezone=auto&forecast_days=1`;
+
+      // Open-Meteo Weather API for wind + air temp
+      const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}` +
+        `&current=temperature_2m,wind_speed_10m,wind_direction_10m,wind_gusts_10m,weather_code` +
+        `&wind_speed_unit=mph&temperature_unit=fahrenheit&timezone=auto&forecast_days=1`;
+
+      const [marineRes, weatherRes] = await Promise.all([
+        fetch(marineUrl),
+        fetch(weatherUrl)
+      ]);
+
+      const [marine, weather] = await Promise.all([
+        marineRes.json(),
+        weatherRes.json()
+      ]);
+
+      renderWeather(marine, weather, lat, lng);
+
+    } catch (err) {
+      showWeatherError('Could not load conditions — check connection');
+    }
+  }
+
+  function windDir(deg) {
+    if (deg == null) return '—';
+    const dirs = ['N','NE','E','SE','S','SW','W','NW'];
+    return dirs[Math.round(deg / 45) % 8];
+  }
+
+  function weatherCodeDesc(code) {
+    if (code == null) return '';
+    if (code === 0)          return 'Clear';
+    if (code <= 3)           return 'Partly cloudy';
+    if (code <= 49)          return 'Foggy';
+    if (code <= 69)          return 'Rain';
+    if (code <= 79)          return 'Snow';
+    if (code <= 82)          return 'Showers';
+    if (code <= 99)          return 'Thunderstorm';
+    return '';
+  }
+
+  function waveCondition(heightFt) {
+    if (heightFt == null) return { label: '—', color: 'var(--muted)' };
+    if (heightFt < 1)  return { label: 'Calm',     color: '#4daa78' };
+    if (heightFt < 3)  return { label: 'Slight',   color: '#4daa78' };
+    if (heightFt < 5)  return { label: 'Moderate', color: 'var(--gold)' };
+    if (heightFt < 8)  return { label: 'Rough',    color: 'var(--rust)' };
+    return               { label: 'Very Rough', color: 'var(--red)' };
+  }
+
+  function renderWeather(marine, weather, lat, lng) {
+    document.getElementById('weatherLoading').style.display = 'none';
+
+    const wc  = weather?.current  || {};
+    const mc  = marine?.current   || {};
+
+    const windSpd  = wc.wind_speed_10m    != null ? Math.round(wc.wind_speed_10m)    + ' mph' : '—';
+    const windGust = wc.wind_gusts_10m    != null ? Math.round(wc.wind_gusts_10m)    + ' mph' : null;
+    const windDirS = windDir(wc.wind_direction_10m);
+    const tempF    = wc.temperature_2m    != null ? Math.round(wc.temperature_2m)    + '°F'   : '—';
+    const waveHt   = mc.wave_height       != null ? (mc.wave_height * 3.281).toFixed(1) + ' ft' : '—';
+    const wavePer  = mc.wave_period       != null ? Math.round(mc.wave_period)       + 's'    : '—';
+    const swellHt  = mc.swell_wave_height != null ? (mc.swell_wave_height * 3.281).toFixed(1) + ' ft' : '—';
+    const waveDirS = windDir(mc.wave_direction);
+    const cond     = weatherCodeDesc(wc.weather_code);
+    const waveC    = waveCondition(mc.wave_height != null ? mc.wave_height * 3.281 : null);
+
+    const cells = [
+      { icon: '💨', val: windSpd,  label: 'Wind',       sub: windDirS + (windGust ? ' · gusts ' + windGust : '') },
+      { icon: '🌊', val: waveHt,   label: 'Wave Height', sub: waveC.label, valColor: waveC.color },
+      { icon: '⏱',  val: wavePer,  label: 'Wave Period', sub: waveDirS + ' swell' },
+      { icon: '🌀', val: swellHt,  label: 'Swell',       sub: '' },
+      { icon: '🌡', val: tempF,    label: 'Air Temp',    sub: cond },
+    ];
+
+    // Rough seas alert
+    let alertHtml = '';
+    const waveNum = mc.wave_height != null ? mc.wave_height * 3.281 : 0;
+    const windNum = wc.wind_speed_10m || 0;
+    if (waveNum >= 8 || windNum >= 25) {
+      alertHtml = `<div class="weather-alert">⚠ Rough conditions — waves ${waveHt}, winds ${windSpd}. Check NOAA marine forecast before heading out.</div>`;
+    }
+
+    document.getElementById('weatherGrid').innerHTML =
+      alertHtml +
+      `<div class="weather-grid">` +
+      cells.map(c => `<div class="weather-cell">
+        <div class="weather-cell-icon">${c.icon}</div>
+        <div class="weather-cell-val" style="${c.valColor ? 'color:' + c.valColor : ''}">${c.val}</div>
+        <div class="weather-cell-label">${c.label}</div>
+        ${c.sub ? `<div class="weather-cell-sub">${c.sub}</div>` : ''}
+      </div>`).join('') +
+      `</div>`;
+
+    // Reassign grid to outer content div (alertHtml is outside .weather-grid)
+    const grid = document.getElementById('weatherGrid');
+    grid.innerHTML = alertHtml + `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-bottom:10px">` +
+      cells.map(c => `<div class="weather-cell">
+        <div class="weather-cell-icon">${c.icon}</div>
+        <div class="weather-cell-val"${c.valColor ? ' style="color:' + c.valColor + '"' : ''}>${c.val}</div>
+        <div class="weather-cell-label">${c.label}</div>
+        ${c.sub ? `<div class="weather-cell-sub">${c.sub}</div>` : ''}
+      </div>`).join('') + `</div>`;
+
+    grid.style.display = 'block';
+
+    const now = new Date();
+    const locStr = lat.toFixed(2) + ', ' + lng.toFixed(2);
+    document.getElementById('weatherMeta').textContent =
+      'Updated ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) +
+      ' · ' + locStr + ' · Open-Meteo';
+  }
+
+  function showWeatherError(msg) {
+    document.getElementById('weatherLoading').style.display = 'none';
+    document.getElementById('weatherEmpty').style.display   = 'block';
+    document.getElementById('weatherEmpty').innerHTML =
+      `<div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rust);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">⚠ ${msg}</div>
+       <button class="btn-weather-locate" onclick="fetchWeather()">Try Again</button>`;
   }
 
   // ── Toast ─────────────────────────────────────────────────
