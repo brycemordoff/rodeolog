@@ -2762,6 +2762,773 @@
     border-top: 3px solid var(--gold);
   }
 
+
+  /* ══ WEATHER TAB ══════════════════════════════════════════ */
+  .wx-location-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .wx-location-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text2);
+    text-transform: uppercase;
+  }
+
+  .wx-loc-icon { font-size: 1rem; }
+
+  .btn-wx-locate {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    padding: 7px 14px;
+    background: var(--teal-lt);
+    border: 1px solid rgba(184,148,63,0.3);
+    color: var(--teal);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-wx-locate:hover { background: var(--line); border-color: var(--teal); }
+
+  .wx-alert-banner {
+    background: var(--rust-lt);
+    border: 1px solid rgba(192,90,42,0.3);
+    border-left: 3px solid var(--rust);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    animation: fadeUp 0.3s ease;
+  }
+
+  .wx-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+  }
+
+  .wx-loading-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--text2);
+    text-transform: uppercase;
+  }
+
+  .wx-section {
+    margin-bottom: 24px;
+    animation: fadeUp 0.35s ease;
+  }
+
+  /* ── NOW grid ── */
+  .wx-now-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+
+  .wx-now-cell {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 14px 14px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wx-now-cell.highlight {
+    border-color: rgba(184,148,63,0.4);
+    background: var(--gold-lt);
+  }
+
+  .wx-now-icon { font-size: 1.4rem; line-height: 1; margin-bottom: 4px; }
+
+  .wx-now-val {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .wx-now-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    color: var(--text2);
+    text-transform: uppercase;
+  }
+
+  .wx-now-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Fishing Index ── */
+  .wx-fishing-index {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wx-fish-score-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .wx-fish-score-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid;
+    flex-shrink: 0;
+  }
+
+  .wx-fish-score-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .wx-fish-score-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 7px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .wx-fish-score-desc {
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .wx-fish-rating {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .wx-fish-summary {
+    font-size: 0.82rem;
+    color: var(--text2);
+    line-height: 1.5;
+  }
+
+  .wx-fish-factors {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .wx-fish-factor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+  }
+
+  .wx-fish-factor-icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+
+  .wx-fish-factor-text { color: var(--text2); flex: 1; }
+
+  .wx-fish-factor-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .badge-good  { background: var(--green-lt); color: var(--green); }
+  .badge-fair  { background: var(--gold-lt);  color: var(--gold);  }
+  .badge-poor  { background: var(--rust-lt);  color: var(--rust);  }
+
+  /* ── 7-Day forecast ── */
+  .wx-forecast-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .wx-forecast-row { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .wx-forecast-day {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.15s;
+  }
+
+  .wx-forecast-day.today {
+    border-color: var(--teal);
+    background: var(--teal-lt);
+  }
+
+  .wx-fc-dow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--text2);
+    text-transform: uppercase;
+  }
+
+  .wx-fc-icon { font-size: 1.4rem; line-height: 1; }
+
+  .wx-fc-hi {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .wx-fc-lo {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+  }
+
+  .wx-fc-wave {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .wx-fc-wind {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    color: var(--text2);
+    text-transform: uppercase;
+  }
+
+  /* ── Hourly scroll ── */
+  .wx-hourly-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+
+  .wx-hourly-cell {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 10px 10px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 72px;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wx-hourly-cell.now {
+    border-color: var(--gold);
+    background: var(--gold-lt);
+  }
+
+  .wx-hr-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    color: var(--text2);
+    text-transform: uppercase;
+  }
+
+  .wx-hr-icon { font-size: 1.1rem; }
+
+  .wx-hr-wind {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .wx-hr-wave {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    color: var(--teal);
+    text-transform: uppercase;
+  }
+
+  .wx-hr-dir {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    color: var(--muted);
+  }
+
+  /* ── Tide chart ── */
+  .wx-tide-chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+
+  #wxTideCanvas { width: 100%; display: block; }
+
+  .wx-tide-events {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+  }
+
+  .wx-tide-event {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wx-tide-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .wx-tide-type.high { color: var(--teal); }
+  .wx-tide-type.low  { color: var(--rust); }
+
+  .wx-tide-time {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .wx-tide-ht {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text2);
+  }
+
+  /* ── Moon ── */
+  .wx-moon-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: var(--shadow-sm);
+    flex-wrap: wrap;
+  }
+
+  .wx-moon-emoji {
+    font-size: 3.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .wx-moon-info { flex: 1; min-width: 180px; }
+
+  .wx-moon-phase-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .wx-moon-detail {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--text2);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .wx-moon-fishing-tip {
+    font-size: 0.82rem;
+    color: var(--text2);
+    line-height: 1.5;
+    margin-top: 8px;
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+  }
+
+  /* ── SST ── */
+  .wx-sst-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    flex-wrap: wrap;
+  }
+
+  .wx-sst-temp {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .wx-sst-info { flex: 1; min-width: 160px; }
+
+  .wx-sst-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: var(--text2);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .wx-sst-tip {
+    font-size: 0.82rem;
+    color: var(--text2);
+    line-height: 1.5;
+  }
+
+  /* ── Empty / Meta ── */
+  .wx-empty {
+    text-align: center;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .wx-empty-icon { font-size: 3rem; }
+
+  .wx-empty-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--navy);
+  }
+
+  .wx-empty-sub {
+    font-size: 0.875rem;
+    color: var(--text2);
+    max-width: 320px;
+    line-height: 1.6;
+  }
+
+  .btn-wx-locate-big {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 12px 28px;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+
+  .btn-wx-locate-big:hover { background: var(--ocean); transform: translateY(-1px); }
+
+  .wx-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    text-align: right;
+    margin-top: 8px;
+    opacity: 0.6;
+  }
+
+
+  /* ── Weather location picker enhancements ── */
+  .wx-loc-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .wx-map-picker {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 16px;
+    animation: fadeUp 0.3s ease;
+    box-shadow: var(--shadow-md);
+  }
+
+  .wx-map-hint {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--text2);
+    text-transform: uppercase;
+    padding: 10px 16px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+  }
+
+  #wxPickerMap {
+    width: 100%;
+    height: 320px;
+  }
+
+  .wx-map-picker-actions {
+    display: flex;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--surface2);
+    border-top: 1px solid var(--line);
+    justify-content: flex-end;
+  }
+
+  .btn-wx-map-cancel {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    padding: 8px 16px;
+    background: var(--surface);
+    border: 1px solid var(--line2);
+    color: var(--text2);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.15s;
+  }
+
+  .btn-wx-map-cancel:hover { background: var(--surface2); }
+
+  .btn-wx-map-confirm {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    padding: 8px 20px;
+    background: var(--teal);
+    border: none;
+    color: #fff;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.15s;
+  }
+
+  .btn-wx-map-confirm:disabled {
+    background: var(--line2);
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+
+  .btn-wx-map-confirm:not(:disabled):hover {
+    background: #0b7c72;
+    transform: translateY(-1px);
+  }
+
+  /* ── Forecast day clickable ── */
+  .wx-forecast-day {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .wx-forecast-day.selected {
+    border-color: var(--gold);
+    background: var(--gold-lt);
+    box-shadow: 0 0 0 2px rgba(184,148,63,0.25);
+  }
+
+  .wx-forecast-day:hover:not(.selected) {
+    border-color: var(--teal);
+    background: var(--teal-lt);
+  }
+
+  .wx-forecast-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .wx-selected-day-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    background: var(--gold-lt);
+    border: 1px solid rgba(184,148,63,0.3);
+    border-radius: var(--radius-sm);
+    padding: 4px 10px;
+  }
+
+  /* ── Forecast day score badge ── */
+  .wx-fc-score {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px auto 0;
+    border: 1.5px solid;
+  }
+
+  /* ── Picker map crosshair marker pulse ── */
+  .wx-picker-pulse {
+    width: 14px; height: 14px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 4px rgba(13,148,136,0.3);
+    animation: pulse 1.4s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 4px rgba(13,148,136,0.3); }
+    50%      { box-shadow: 0 0 0 8px rgba(13,148,136,0.1); }
+  }
+
+  .wx-buoy-source {
+    grid-column: 1 / -1;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    text-transform: uppercase;
+    padding: 6px 10px;
+    background: rgba(13,148,136,0.06);
+    border: 1px solid rgba(13,148,136,0.15);
+    border-radius: var(--radius-sm);
+    margin-bottom: 4px;
+  }
+
+  /* ── Species card photo ── */
+  .sp-photo-wrap {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--sky), var(--teal-lt));
+    position: relative;
+  }
+
+  .sp-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s, transform 0.4s;
+    opacity: 0;
+  }
+
+  .sp-photo.loaded {
+    opacity: 1;
+  }
+
+  .sp-photo-wrap:hover .sp-photo.loaded {
+    transform: scale(1.04);
+  }
+
+  .sp-photo-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: rgba(13,148,136,0.2);
+    transition: opacity 0.3s;
+  }
+
+  .sp-photo-placeholder.hidden { opacity: 0; pointer-events: none; }
+
+  .sp-photo-credit {
+    position: absolute;
+    bottom: 4px;
+    right: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 7px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.35);
+    padding: 2px 5px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .sp-card-header {
+    border-top: none;
+  }
 </style>
 </head>
 <body>
@@ -2838,6 +3605,9 @@
   <button class="more-menu-item" onclick="switchTab('species');toggleMoreMenu(false)">
     <span>🐟</span> Species Guide
   </button>
+  <button class="more-menu-item" onclick="switchTab('weather');toggleMoreMenu(false)">
+    <span>🌊</span> Weather
+  </button>
   <button class="more-menu-item" onclick="exportData();toggleMoreMenu(false)">
     <span>⬇</span> Export Data
   </button>
@@ -2869,29 +3639,12 @@
     <button class="nav-tab" onclick="switchTab('anglers')">Anglers</button>
     <button class="nav-tab" onclick="switchTab('map')">Map</button>
     <button class="nav-tab" onclick="switchTab('species')">Species Guide</button>
+    <button class="nav-tab" onclick="switchTab('weather')">Weather</button>
   </div>
 
   <!-- ══ TRIPS TAB ══════════════════════════════════════════ -->
   <div class="tab-view active" id="tab-trips">
 
-    <!-- Weather Widget -->
-    <div class="weather-widget" id="weatherWidget">
-      <div class="weather-header">
-        <div class="weather-title">🌊 Current Conditions</div>
-        <button class="btn-weather-refresh" onclick="fetchWeather()" id="btnWeatherRefresh">Refresh</button>
-      </div>
-      <div id="weatherContent">
-        <div class="weather-loading" id="weatherLoading" style="display:none">
-          <span class="ai-spinner active" style="display:inline-block;margin-right:8px"></span>
-          Fetching conditions…
-        </div>
-        <div class="weather-empty" id="weatherEmpty">
-          <button class="btn-weather-locate" onclick="fetchWeather()">📍 Get conditions for my location</button>
-        </div>
-        <div class="weather-grid" id="weatherGrid" style="display:none"></div>
-        <div class="weather-meta" id="weatherMeta"></div>
-      </div>
-    </div>
 
     <!-- New Trip Form -->
     <div class="new-trip-section" id="newTripSection" style="display:none">
@@ -3323,6 +4076,105 @@
 
   </div>
 
+
+  <!-- ══ WEATHER TAB ═══════════════════════════════════════ -->
+  <div class="tab-view" id="tab-weather">
+
+    <!-- ── LOCATION BAR ──────────────────────────── -->
+    <div class="wx-location-bar" id="wxLocationBar">
+      <div class="wx-location-info">
+        <span class="wx-loc-icon">📍</span>
+        <span class="wx-loc-text" id="wxLocText">Newport Beach, CA</span>
+      </div>
+      <div class="wx-loc-actions">
+        <button class="btn-wx-locate" onclick="initWeatherTab(true)">⊕ My Location</button>
+        <button class="btn-wx-locate" onclick="toggleWxMap()" id="btnWxMap" style="background:var(--surface2)">🗺 Pick on Map</button>
+      </div>
+    </div>
+
+    <!-- ── LOCATION PICKER MAP ────────────────────── -->
+    <div class="wx-map-picker" id="wxMapPicker" style="display:none">
+      <div class="wx-map-hint">Tap anywhere on the map to get the forecast for that location</div>
+      <div id="wxPickerMap"></div>
+      <div class="wx-map-picker-actions">
+        <button class="btn-wx-map-cancel" onclick="toggleWxMap(false)">Cancel</button>
+        <button class="btn-wx-map-confirm" id="btnWxConfirm" onclick="confirmWxLocation()" disabled>Set This Location</button>
+      </div>
+    </div>
+
+    <!-- ── SAFETY ALERT ───────────────────────────── -->
+    <div class="wx-alert-banner" id="wxAlertBanner" style="display:none"></div>
+
+    <!-- ── LOADING ────────────────────────────────── -->
+    <div class="wx-loading" id="wxLoading" style="display:none">
+      <div class="wx-loading-inner">
+        <span class="ai-spinner active" style="display:inline-block"></span>
+        <span>Fetching marine forecast…</span>
+      </div>
+    </div>
+
+    <!-- ── 7-DAY FORECAST (clickable) ────────────── -->
+    <div class="wx-section" id="wxForecastSection" style="display:none">
+      <div class="wx-forecast-header">
+        <div class="section-title" style="margin:0;flex:none">7-Day Forecast</div>
+        <div class="wx-selected-day-label" id="wxSelectedDayLabel"></div>
+      </div>
+      <div class="wx-forecast-row" id="wxForecastRow"></div>
+    </div>
+
+    <!-- ── CONDITIONS (updates per selected day) ─── -->
+    <div class="wx-section" id="wxNowSection" style="display:none">
+      <div class="section-title" id="wxNowTitle">Today's Conditions</div>
+      <div class="wx-now-grid" id="wxNowGrid"></div>
+    </div>
+
+    <!-- ── FISHING INDEX (updates per selected day) ─ -->
+    <div class="wx-section" id="wxIndexSection" style="display:none">
+      <div class="section-title">Fishing Conditions Index</div>
+      <div class="wx-fishing-index" id="wxFishingIndex"></div>
+    </div>
+
+    <!-- ── HOURLY WIND & WAVE ─────────────────────── -->
+    <div class="wx-section" id="wxHourlySection" style="display:none">
+      <div class="section-title" id="wxHourlyTitle">Hourly Breakdown</div>
+      <div class="wx-hourly-scroll" id="wxHourlyScroll"></div>
+    </div>
+
+    <!-- ── TIDES ──────────────────────────────────── -->
+    <div class="wx-section" id="wxTidesSection" style="display:none">
+      <div class="section-title" id="wxTidesTitle">Tides</div>
+      <div class="wx-tide-chart-wrap">
+        <canvas id="wxTideCanvas" height="120"></canvas>
+      </div>
+      <div class="wx-tide-events" id="wxTideEvents"></div>
+    </div>
+
+    <!-- ── MOON PHASE ────────────────────────────── -->
+    <div class="wx-section" id="wxMoonSection" style="display:none">
+      <div class="section-title">Moon Phase</div>
+      <div class="wx-moon-card" id="wxMoonCard"></div>
+    </div>
+
+    <!-- ── SST ───────────────────────────────────── -->
+    <div class="wx-section" id="wxSSTSection" style="display:none">
+      <div class="section-title">Sea Surface Temperature</div>
+      <div class="wx-sst-card" id="wxSSTCard"></div>
+    </div>
+
+    <!-- Meta -->
+    <div class="wx-meta" id="wxMeta"></div>
+
+    <!-- Empty state -->
+    <div class="wx-empty" id="wxEmpty">
+      <div class="wx-empty-icon">🌊</div>
+      <div class="wx-empty-title">Marine Forecast</div>
+      <div class="wx-empty-sub">Get current conditions, tides, swell, and fishing index for your area — or pick any location on the map.</div>
+      <button class="btn-wx-locate-big" onclick="initWeatherTab(true)">📍 Use My Location</button>
+      <button class="btn-wx-locate-big" onclick="toggleWxMap()" style="background:var(--navy);margin-top:8px">🗺 Pick on Map</button>
+    </div>
+
+  </div>
+
 </div>
 
 <!-- DELETE MODAL -->
@@ -3384,7 +4236,7 @@
     document.querySelectorAll('.tab-view').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
     document.getElementById('tab-' + tab).classList.add('active');
-    const tabs = ['trips','log','all','stats','anglers','map','species'];
+    const tabs = ['trips','log','all','stats','anglers','map','species','weather'];
     document.querySelectorAll('.nav-tab')[tabs.indexOf(tab)].classList.add('active');
 
     // Sync bottom nav
@@ -3399,6 +4251,7 @@
     if (tab === 'anglers') renderAnglers();
     if (tab === 'map')     initMap();
     if (tab === 'species' && !speciesRendered) { renderSpeciesGuide(); speciesRendered = true; }
+    if (tab === 'weather' && !weatherTabLoaded) { initWeatherTab(); }
     closeSpeciesList();
   }
 
@@ -4338,6 +5191,54 @@ Return ONLY a valid JSON object with these fields (use null if unknown or not vi
     },
   ];
 
+
+  // ── Species Wikipedia image map ──────────────────────────
+  const SPECIES_WIKI = {
+    "Yellowfin Tuna": "Yellowfin_tuna",
+    "Bluefin Tuna": "Pacific_bluefin_tuna",
+    "Albacore Tuna": "Albacore",
+    "Skipjack Tuna": "Skipjack_tuna",
+    "Bigeye Tuna": "Bigeye_tuna",
+    "Dorado (Mahi-Mahi)": "Mahi-mahi",
+    "Broadbill Swordfish": "Swordfish",
+    "Yellowtail": "Seriola_dorsalis",
+    "White Seabass": "White_seabass",
+    "Pacific Bonito": "Pacific_bonito",
+    "California Barracuda": "California_barracuda",
+    "Calico Bass (Kelp Bass)": "Paralabrax_clathratus",
+    "Barred Sand Bass": "Barred_sand_bass",
+    "California Sheephead": "California_sheephead",
+    "California Scorpionfish": "California_scorpionfish",
+    "Ocean Whitefish": "Ocean_whitefish",
+    "Leopard Shark": "Leopard_shark",
+    "California Halibut": "California_halibut",
+    "Lingcod": "Lingcod",
+    "Rockfish (RCG Complex)": "Rockfish",
+    "Cabezon": "Cabezon_(fish)",
+    "California Halibut (Pacific)": "California_halibut",
+    "Sand Dabs": "Pacific_sanddab"
+};
+
+  async function loadSpeciesPhoto(name, imgEl, placeholderEl) {
+    const wikiTitle = SPECIES_WIKI[name];
+    if (!wikiTitle) return;
+    try {
+      const url = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(wikiTitle)}&prop=pageimages&pithumbsize=600&format=json&origin=*`;
+      const r = await fetch(url);
+      const d = await r.json();
+      const pages = d?.query?.pages;
+      if (!pages) return;
+      const page = Object.values(pages)[0];
+      const src  = page?.thumbnail?.source;
+      if (!src) return;
+      imgEl.onload = () => {
+        imgEl.classList.add('loaded');
+        if (placeholderEl) placeholderEl.classList.add('hidden');
+      };
+      imgEl.src = src;
+    } catch { /* silently fail — placeholder stays */ }
+  }
+
   function renderSpeciesGuide(filtered) {
     const data = filtered || SPECIES_DB;
     const grid = document.getElementById('speciesGuideGrid');
@@ -4348,14 +5249,30 @@ Return ONLY a valid JSON object with these fields (use null if unknown or not vi
     }
     grid.className = 'species-guide-grid';
     grid.innerHTML = data.map(s => speciesCardHTML(s)).join('');
+
+    // Lazy-load photos via Wikipedia API after DOM is painted
+    requestAnimationFrame(() => {
+      data.forEach(s => {
+        const uid  = s.name.replace(/[^a-z0-9]/gi,'_');
+        const img  = document.getElementById('spi_' + uid);
+        const phld = document.getElementById('spp_' + uid);
+        if (img) loadSpeciesPhoto(s.name, img, phld);
+      });
+    });
   }
 
   function speciesCardHTML(s) {
     const catLabels = { pelagic: 'Pelagic', nearshore: 'Nearshore', bottom: 'Bottom Fish', tuna: 'Tuna & Billfish' };
     const statusClass = s.status === 'warn' ? 'warn' : s.status === 'caution' ? 'caution' : 'ok';
     const tipHtml = s.tips.map(t => `<span class="sp-tip">${t}</span>`).join('');
+    const uid = s.name.replace(/[^a-z0-9]/gi,'_');
 
     return `<div class="sp-card">
+      <div class="sp-photo-wrap">
+        <div class="sp-photo-placeholder" id="spp_${uid}">${s.emoji}</div>
+        <img class="sp-photo" id="spi_${uid}" alt="${s.name}" loading="lazy">
+        <div class="sp-photo-credit">Wikipedia / CC</div>
+      </div>
       <div class="sp-card-header">
         <div class="sp-emoji">${s.emoji}</div>
         <div class="sp-names">
@@ -5393,57 +6310,413 @@ Return ONLY a valid JSON object with these fields (use null if unknown or not vi
     navigator.serviceWorker.controller.postMessage({ type: 'CACHE_TILES', urls });
   }
 
-  // ── Weather & Marine Conditions ───────────────────────────
-  let weatherCoords = null;
+  // ── Weather Tab ──────────────────────────────────────────
+  let weatherTabLoaded = false;
+  let wxCoords    = { lat: 33.6189, lng: -117.9289 }; // Newport Beach default
+  let wxData      = null;   // { marine, weather } — cached API response
+  let wxSelDay    = 0;      // currently selected day index (0 = today)
+  let wxPickerMap = null;   // Leaflet map instance for location picker
+  let wxPickerPin = null;   // pending pin coords
+  let wxPickerMarker = null;
 
-  function fetchWeather() {
-    document.getElementById('weatherEmpty').style.display   = 'none';
-    document.getElementById('weatherGrid').style.display    = 'none';
-    document.getElementById('weatherLoading').style.display = 'flex';
-    document.getElementById('weatherMeta').textContent      = '';
+  // ── Init ─────────────────────────────────────────────────
+  function initWeatherTab(forceGPS = false) {
+    document.getElementById('wxEmpty').style.display   = 'none';
+    document.getElementById('wxLoading').style.display = 'flex';
+    hideAllWxSections();
+    wxSelDay = 0;
 
-    if (!navigator.geolocation) {
-      showWeatherError('GPS not available on this device');
-      return;
+    const doLoad = (lat, lng) => {
+      wxCoords = { lat, lng };
+      reverseGeocode(lat, lng);
+      loadAllWeatherData(lat, lng);
+    };
+
+    if (forceGPS || !weatherTabLoaded) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          pos => doLoad(pos.coords.latitude, pos.coords.longitude),
+          ()  => doLoad(wxCoords.lat, wxCoords.lng),
+          { timeout: 8000 }
+        );
+      } else {
+        doLoad(wxCoords.lat, wxCoords.lng);
+      }
     }
-
-    navigator.geolocation.getCurrentPosition(pos => {
-      weatherCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-      loadWeatherData(weatherCoords.lat, weatherCoords.lng);
-    }, () => {
-      // Fall back to SoCal default
-      loadWeatherData(33.5, -118.3);
-    }, { timeout: 8000 });
+    weatherTabLoaded = true;
   }
 
-  async function loadWeatherData(lat, lng) {
-    try {
-      // Open-Meteo Marine API — free, no key needed
-      const marineUrl = `https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lng}` +
-        `&hourly=wave_height,wave_direction,wave_period,swell_wave_height,swell_wave_period` +
-        `&current=wave_height,wave_direction,wave_period,swell_wave_height` +
-        `&wind_speed_unit=mph&length_unit=imperial&timezone=auto&forecast_days=1`;
+  // ── Map Picker ───────────────────────────────────────────
+  function toggleWxMap(show) {
+    const picker = document.getElementById('wxMapPicker');
+    const isOpen = picker.style.display !== 'none';
+    const open   = show !== undefined ? show : !isOpen;
+    picker.style.display = open ? 'block' : 'none';
 
-      // Open-Meteo Weather API for wind + air temp
-      const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}` +
-        `&current=temperature_2m,wind_speed_10m,wind_direction_10m,wind_gusts_10m,weather_code` +
-        `&wind_speed_unit=mph&temperature_unit=fahrenheit&timezone=auto&forecast_days=1`;
+    if (open) {
+      // Init Leaflet map inside picker (lazy)
+      setTimeout(() => {
+        if (!wxPickerMap) {
+          wxPickerMap = L.map('wxPickerMap', { zoomControl: true }).setView(
+            [wxCoords.lat, wxCoords.lng], 9
+          );
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap',
+            maxZoom: 14
+          }).addTo(wxPickerMap);
 
-      const [marineRes, weatherRes] = await Promise.all([
-        fetch(marineUrl),
-        fetch(weatherUrl)
-      ]);
+          wxPickerMap.on('click', e => {
+            wxPickerPin = { lat: e.latlng.lat, lng: e.latlng.lng };
+            if (wxPickerMarker) wxPickerMarker.remove();
+            const pulseIcon = L.divIcon({
+              className: '',
+              html: '<div class="wx-picker-pulse"></div>',
+              iconSize: [14, 14],
+              iconAnchor: [7, 7]
+            });
+            wxPickerMarker = L.marker([wxPickerPin.lat, wxPickerPin.lng], { icon: pulseIcon }).addTo(wxPickerMap);
+            document.getElementById('btnWxConfirm').disabled = false;
+          });
 
-      const [marine, weather] = await Promise.all([
-        marineRes.json(),
-        weatherRes.json()
-      ]);
-
-      renderWeather(marine, weather, lat, lng);
-
-    } catch (err) {
-      showWeatherError('Could not load conditions — check connection');
+          // Drop initial marker at current coords
+          wxPickerPin = { lat: wxCoords.lat, lng: wxCoords.lng };
+          const pulseIcon = L.divIcon({
+            className: '',
+            html: '<div class="wx-picker-pulse"></div>',
+            iconSize: [14, 14], iconAnchor: [7, 7]
+          });
+          wxPickerMarker = L.marker([wxCoords.lat, wxCoords.lng], { icon: pulseIcon }).addTo(wxPickerMap);
+          document.getElementById('btnWxConfirm').disabled = false;
+        } else {
+          wxPickerMap.invalidateSize();
+          wxPickerMap.setView([wxCoords.lat, wxCoords.lng], 9);
+        }
+      }, 50);
     }
+  }
+
+  function confirmWxLocation() {
+    if (!wxPickerPin) return;
+    toggleWxMap(false);
+    wxCoords = { lat: wxPickerPin.lat, lng: wxPickerPin.lng };
+    weatherTabLoaded = false;
+    document.getElementById('wxEmpty').style.display   = 'none';
+    document.getElementById('wxLoading').style.display = 'flex';
+    hideAllWxSections();
+    wxSelDay = 0;
+    reverseGeocode(wxCoords.lat, wxCoords.lng);
+    loadAllWeatherData(wxCoords.lat, wxCoords.lng);
+    weatherTabLoaded = true;
+  }
+
+  // ── Helpers ──────────────────────────────────────────────
+  function hideAllWxSections() {
+    ['wxNowSection','wxIndexSection','wxForecastSection','wxHourlySection',
+     'wxTidesSection','wxMoonSection','wxSSTSection','wxAlertBanner'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+  }
+
+  function showWxSection(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'block';
+  }
+
+  async function reverseGeocode(lat, lng) {
+    try {
+      const r = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`);
+      const d = await r.json();
+      const city  = d.address?.city || d.address?.town || d.address?.village || d.address?.county || '';
+      const state = d.address?.state_code || d.address?.state || '';
+      document.getElementById('wxLocText').textContent =
+        city && state ? `${city}, ${state}` : `${lat.toFixed(2)}, ${lng.toFixed(2)}`;
+    } catch {
+      document.getElementById('wxLocText').textContent = `${lat.toFixed(2)}, ${lng.toFixed(2)}`;
+    }
+  }
+
+  // ── Load Data ────────────────────────────────────────────
+  // ── Find nearest NDBC buoy to given coords ───────────────
+  // Buoys relevant to SoCal fishing (id, lat, lng, name)
+  const WX_BUOYS = [
+    { id:'46222', lat:33.614, lng:-118.314, name:'San Pedro Channel (Scripps nearshore)' },
+    { id:'46025', lat:33.755, lng:-119.045, name:'Santa Monica Basin' },
+    { id:'46086', lat:32.491, lng:-118.034, name:'San Clemente Basin' },
+    { id:'46224', lat:33.187, lng:-117.473, name:'Oceanside Offshore' },
+    { id:'46047', lat:32.433, lng:-119.527, name:'Tanner Bank' },
+    { id:'46053', lat:34.267, lng:-120.267, name:'Santa Barbara Channel' },
+    { id:'46054', lat:34.274, lng:-120.459, name:'W Santa Barbara' },
+    { id:'46069', lat:33.667, lng:-120.200, name:'S Santa Rosa Island' },
+  ];
+
+  function nearestBuoy(lat, lng) {
+    let best = WX_BUOYS[0], bestDist = Infinity;
+    WX_BUOYS.forEach(b => {
+      const d = Math.hypot(b.lat - lat, b.lng - lng);
+      if (d < bestDist) { bestDist = d; best = b; }
+    });
+    return best;
+  }
+
+  const TIDE_STATIONS = [
+    { id: '9410580', name: 'Newport Beach',  lat: 33.604, lng: -117.873 },
+    { id: '9410660', name: 'Los Angeles',    lat: 33.720, lng: -118.272 },
+    { id: '9410230', name: 'La Jolla',       lat: 32.867, lng: -117.257 },
+    { id: '9410170', name: 'San Diego',      lat: 32.714, lng: -117.174 },
+    { id: '9411340', name: 'Santa Barbara',  lat: 34.404, lng: -119.690 },
+    { id: '9411406', name: 'Port San Luis',  lat: 35.169, lng: -120.754 },
+    { id: '9412110', name: 'Port Chicago',   lat: 38.056, lng: -122.019 },
+    { id: '9414290', name: 'San Francisco',  lat: 37.806, lng: -122.465 },
+  ];
+
+  function nearestTideStation(lat, lng) {
+    let best = TIDE_STATIONS[0], bestDist = Infinity;
+    TIDE_STATIONS.forEach(s => {
+      const d = Math.hypot(s.lat - lat, s.lng - lng);
+      if (d < bestDist) { bestDist = d; best = s; }
+    });
+    return best;
+  }
+
+  async function fetchTidePredictions(stationId, dateStr) {
+    // NOAA CO-OPS API — free, no key, CORS-enabled
+    const url = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter` +
+      `?begin_date=${dateStr}&end_date=${dateStr}` +
+      `&station=${stationId}&product=predictions&datum=MLLW` +
+      `&time_zone=lst_ldt&interval=hilo&units=english&application=RodeoFishingApp&format=json`;
+    const r = await fetch(url);
+    const d = await r.json();
+    return d.predictions || [];
+  }
+
+  // ── Parse NDBC real-time text file ───────────────────────
+  async function fetchNDBCBuoy(buoyId) {
+    // NDBC real-time txt is plain text, CORS-accessible via a proxy
+    const url = `https://www.ndbc.noaa.gov/data/realtime2/${buoyId}.txt`;
+    try {
+      // Use a CORS proxy since NDBC doesn't set CORS headers
+      const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
+      const r = await fetch(proxyUrl, { signal: AbortSignal.timeout(6000) });
+      if (!r.ok) throw new Error('not ok');
+      const text = await r.text();
+      return parseNDBCText(text, buoyId);
+    } catch {
+      return null;
+    }
+  }
+
+  function parseNDBCText(text, buoyId) {
+    const lines = text.trim().split('\n');
+    // Line 0 is header, line 1 is units, line 2+ is data (newest first after header)
+    if (lines.length < 3) return null;
+    const headers = lines[0].replace(/^#\s*/,'').trim().split(/\s+/);
+
+    // Find most recent row with real data (not all MM)
+    let dataLine = null;
+    for (let i = 2; i < Math.min(lines.length, 10); i++) {
+      if (!lines[i].startsWith('#') && lines[i].trim()) { dataLine = lines[i]; break; }
+    }
+    if (!dataLine) return null;
+
+    const vals = dataLine.trim().split(/\s+/);
+    const get  = key => {
+      const idx = headers.indexOf(key);
+      if (idx === -1) return null;
+      const v = vals[idx];
+      return (v === 'MM' || v === undefined) ? null : parseFloat(v);
+    };
+
+    // NDBC fields: WVHT (m), DPD (dominant period s), APD (avg period s),
+    // MWD (wave dir deg), WTMP (water temp C), WSPD (wind m/s), WDIR (wind dir),
+    // GST (gust m/s), ATMP (air temp C), PRES (pressure hPa)
+    const wvhtM  = get('WVHT');
+    const dpd    = get('DPD');
+    const apd    = get('APD');
+    const mwd    = get('MWD');
+    const wtmpC  = get('WTMP');
+    const wspdMs = get('WSPD');
+    const wdir   = get('WDIR');
+    const gstMs  = get('GST');
+    const atmpC  = get('ATMP');
+    const pres   = get('PRES');
+
+    return {
+      source:    'NDBC ' + buoyId,
+      buoyId,
+      // Convert to imperial
+      wvhtFt:    wvhtM   != null ? wvhtM * 3.281   : null,
+      period:    dpd     ?? apd,
+      waveDir:   mwd,
+      wtmpF:     wtmpC   != null ? wtmpC * 9/5 + 32 : null,
+      windMph:   wspdMs  != null ? wspdMs * 2.237   : null,
+      gustMph:   gstMs   != null ? gstMs  * 2.237   : null,
+      windDir:   wdir,
+      atmpF:     atmpC   != null ? atmpC  * 9/5 + 32 : null,
+      pressureHpa: pres,
+    };
+  }
+
+  async function loadAllWeatherData(lat, lng) {
+    try {
+      const days = 7;
+
+      // ── Open-Meteo: atmosphere + 7-day forecast (no length_unit param — marine API returns meters always)
+      const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}` +
+        `&current=temperature_2m,wind_speed_10m,wind_direction_10m,wind_gusts_10m,weather_code,relative_humidity_2m,visibility,uv_index` +
+        `&hourly=temperature_2m,wind_speed_10m,wind_direction_10m,weather_code,precipitation_probability` +
+        `&daily=temperature_2m_max,temperature_2m_min,weather_code,wind_speed_10m_max,wind_direction_10m_dominant,precipitation_sum,uv_index_max,sunrise,sunset` +
+        `&wind_speed_unit=mph&temperature_unit=fahrenheit&timezone=auto&forecast_days=${days}`;
+
+      // ── Open-Meteo Marine: FORECAST only (daily + hourly). No length_unit — values are ALWAYS in meters.
+      // We convert meters→feet ourselves. Do NOT use length_unit=imperial (it's unreliable).
+      const marineUrl = `https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lng}` +
+        `&current=wave_height,wave_direction,wave_period,swell_wave_height,swell_wave_direction,swell_wave_period` +
+        `&hourly=wave_height,wave_direction,wave_period,swell_wave_height` +
+        `&daily=wave_height_max,swell_wave_height_max,wave_period_max` +
+        `&timezone=auto&forecast_days=${days}`;
+
+      // ── NDBC buoy: real observed conditions right now ─────
+      const buoy = nearestBuoy(lat, lng);
+
+      const [weatherRes, marineRes, buoyData] = await Promise.all([
+        fetch(weatherUrl).then(r => r.json()),
+        fetch(marineUrl).then(r => r.json()),
+        fetchNDBCBuoy(buoy.id),
+      ]);
+
+      // ── Sanity-check marine data: Open-Meteo returns meters.
+      // Apply a coastal reduction factor: nearshore breaking wave height is typically
+      // 60-80% of deep-water significant wave height for SoCal.
+      const COASTAL_FACTOR = 0.7; // conservative — prevents over-reporting
+      const scaleM2Ft = m => m != null ? m * 3.281 * COASTAL_FACTOR : null;
+
+      // Patch marine current with scaled values
+      if (marineRes?.current) {
+        const mc = marineRes.current;
+        mc._wvhtFt  = scaleM2Ft(mc.wave_height);
+        mc._swellFt = scaleM2Ft(mc.swell_wave_height);
+      }
+      // Patch daily
+      if (marineRes?.daily?.wave_height_max) {
+        marineRes.daily._wvhtFtMax   = marineRes.daily.wave_height_max.map(v => scaleM2Ft(v));
+        marineRes.daily._swellFtMax  = marineRes.daily.swell_wave_height_max?.map(v => scaleM2Ft(v)) || [];
+      }
+      // Patch hourly
+      if (marineRes?.hourly?.wave_height) {
+        marineRes.hourly._wvhtFt = marineRes.hourly.wave_height.map(v => scaleM2Ft(v));
+      }
+
+      // Fetch today's real NOAA tides in parallel (non-blocking)
+      const tideStation = nearestTideStation(lat, lng);
+      const today = new Date();
+      const todayStr = today.getFullYear().toString() +
+        String(today.getMonth()+1).padStart(2,'0') +
+        String(today.getDate()).padStart(2,'0');
+      let tides = [];
+      try { tides = await fetchTidePredictions(tideStation.id, todayStr); } catch(e) {}
+
+      wxData = {
+        marine:  marineRes,
+        weather: weatherRes,
+        buoy:    buoyData,    // real observed data — most accurate for "Now"
+        buoyMeta: buoy,
+        tides,
+        tideStation,
+      };
+
+      document.getElementById('wxLoading').style.display = 'none';
+
+      renderWxForecast();
+      renderWxMoon();
+      renderWxSST();
+
+      const now = new Date();
+      const buoyNote = buoyData ? ` · Buoy ${buoy.id} observed` : ' · Open-Meteo forecast';
+      document.getElementById('wxMeta').textContent =
+        'Updated ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) +
+        buoyNote + ' · Tap a day to view its forecast';
+
+    } catch(err) {
+      document.getElementById('wxLoading').style.display = 'none';
+      document.getElementById('wxEmpty').style.display   = 'block';
+      document.getElementById('wxEmpty').innerHTML = `
+        <div class="wx-empty-icon">⚠️</div>
+        <div class="wx-empty-title">Could Not Load Forecast</div>
+        <div class="wx-empty-sub">Check your connection and try again.</div>
+        <button class="btn-wx-locate-big" onclick="initWeatherTab(true)" style="background:var(--rust)">Retry</button>`;
+    }
+  }
+
+  // ── Select Day (called on card click + initial load) ─────
+  function selectWxDay(dayIdx) {
+    wxSelDay = dayIdx;
+    const { marine, weather } = wxData;
+    const wd = weather?.daily || {};
+    const isToday = dayIdx === 0;
+
+    // Update selected day label
+    const dateStr = wd.time?.[dayIdx];
+    const d = dateStr ? new Date(dateStr + 'T12:00:00') : new Date();
+    const label = isToday ? 'Today' : d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+    document.getElementById('wxSelectedDayLabel').textContent = label;
+    document.getElementById('wxNowTitle').textContent     = isToday ? "Today's Conditions" : label + ' Conditions';
+    document.getElementById('wxHourlyTitle').textContent  = isToday ? 'Hourly Breakdown — Next 24h' : 'Hourly Breakdown — ' + d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    document.getElementById('wxTidesTitle').textContent   = isToday ? 'Tides — Today' : 'Tides — ' + d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+
+    // Highlight selected card
+    document.querySelectorAll('.wx-forecast-day').forEach((el, i) => {
+      el.classList.toggle('selected', i === dayIdx);
+    });
+
+    renderWxNow(dayIdx);
+    renderWxFishingIndex(dayIdx);
+    renderWxHourly(dayIdx);
+    renderWxTides(dayIdx);
+    renderWxAlerts(dayIdx);
+  }
+
+  // ── Alerts ───────────────────────────────────────────────
+  function renderWxAlerts(dayIdx) {
+    const { marine, weather } = wxData;
+    const wd = weather?.daily || {};
+    const md = marine?.daily  || {};
+    const waveHtFt = md._wvhtFtMax?.[dayIdx] ?? 0;
+    const windSpd  = wd.wind_speed_10m_max?.[dayIdx] || 0;
+    const ab = document.getElementById('wxAlertBanner');
+    if (waveHtFt >= 6 || windSpd >= 20) {
+      ab.innerHTML = `⚠ ${windSpd >= 20 ? 'Strong winds ' + Math.round(windSpd) + ' mph' : ''} ${waveHtFt >= 6 ? ' · Rough seas ' + waveHtFt.toFixed(1) + ' ft' : ''} — Check NOAA marine forecast before departing`;
+      ab.style.display = 'block';
+    } else {
+      ab.style.display = 'none';
+    }
+  }
+
+  // ── Helper functions ─────────────────────────────────────
+  function wxEmoji(code) {
+    if (code == null) return '🌤';
+    if (code === 0)   return '☀️';
+    if (code <= 2)    return '🌤';
+    if (code <= 3)    return '⛅';
+    if (code <= 49)   return '🌫';
+    if (code <= 67)   return '🌧';
+    if (code <= 77)   return '🌨';
+    if (code <= 82)   return '🌦';
+    if (code <= 99)   return '⛈';
+    return '🌤';
+  }
+
+  function wxDesc(code) {
+    if (code == null) return '';
+    if (code === 0)   return 'Clear';
+    if (code <= 2)    return 'Mostly Clear';
+    if (code <= 3)    return 'Partly Cloudy';
+    if (code <= 49)   return 'Foggy';
+    if (code <= 67)   return 'Rain';
+    if (code <= 77)   return 'Snow';
+    if (code <= 82)   return 'Showers';
+    if (code <= 99)   return 'Thunderstorm';
+    return '';
   }
 
   function windDir(deg) {
@@ -5452,99 +6725,678 @@ Return ONLY a valid JSON object with these fields (use null if unknown or not vi
     return dirs[Math.round(deg / 45) % 8];
   }
 
-  function weatherCodeDesc(code) {
-    if (code == null) return '';
-    if (code === 0)          return 'Clear';
-    if (code <= 3)           return 'Partly cloudy';
-    if (code <= 49)          return 'Foggy';
-    if (code <= 69)          return 'Rain';
-    if (code <= 79)          return 'Snow';
-    if (code <= 82)          return 'Showers';
-    if (code <= 99)          return 'Thunderstorm';
-    return '';
+  function windArrow(deg) {
+    if (deg == null) return '';
+    const arrows = ['↓','↙','←','↖','↑','↗','→','↘'];
+    return arrows[Math.round(deg / 45) % 8];
   }
 
-  function waveCondition(heightFt) {
-    if (heightFt == null) return { label: '—', color: 'var(--muted)' };
-    if (heightFt < 1)  return { label: 'Calm',     color: '#4daa78' };
-    if (heightFt < 3)  return { label: 'Slight',   color: '#4daa78' };
-    if (heightFt < 5)  return { label: 'Moderate', color: 'var(--gold)' };
-    if (heightFt < 8)  return { label: 'Rough',    color: 'var(--rust)' };
-    return               { label: 'Very Rough', color: 'var(--red)' };
+  function waveRating(ft) {
+    if (ft == null) return { label: '—', color: 'var(--muted)' };
+    if (ft < 1)  return { label: 'Calm',      color: '#4daa78' };
+    if (ft < 3)  return { label: 'Slight',    color: '#4daa78' };
+    if (ft < 5)  return { label: 'Moderate',  color: 'var(--gold)' };
+    if (ft < 8)  return { label: 'Rough',     color: 'var(--rust)' };
+    return             { label: 'Very Rough', color: 'var(--red)' };
   }
 
-  function renderWeather(marine, weather, lat, lng) {
-    document.getElementById('weatherLoading').style.display = 'none';
+  function calcFishScore(windSpd, waveHtFt, code, temp, moonPct) {
+    const nearFull = moonPct > 0.85 || moonPct < 0.15;
+    const nearNew  = moonPct > 0.45 && moonPct < 0.55;
+    const windScore = windSpd  <= 10 ? 10 : windSpd  <= 15 ? 8 : windSpd  <= 20 ? 5 : windSpd  <= 25 ? 3 : 0;
+    const waveScore = waveHtFt <= 2  ? 10 : waveHtFt <= 4  ? 8 : waveHtFt <= 6  ? 5 : waveHtFt <= 8  ? 3 : 0;
+    const skyScore  = code === 0 ? 9 : code <= 3 ? 8 : code <= 49 ? 6 : code <= 82 ? 4 : 1;
+    const tempScore = temp >= 65 && temp <= 85 ? 10 : temp >= 55 && temp <= 90 ? 7 : 4;
+    const moonScore = nearFull || nearNew ? 9 : 6;
+    return { total: Math.round((windScore + waveScore + skyScore + tempScore + moonScore) / 5),
+             windScore, waveScore, skyScore, tempScore, moonScore, nearFull, nearNew };
+  }
 
-    const wc  = weather?.current  || {};
-    const mc  = marine?.current   || {};
+  function scoreColor(s) { return s >= 8 ? '#4daa78' : s >= 6 ? '#b8943f' : s >= 4 ? '#c05a2a' : '#c0392b'; }
+  function scoreBadge(s) { return s >= 7 ? 'good' : s >= 5 ? 'fair' : 'poor'; }
 
-    const windSpd  = wc.wind_speed_10m    != null ? Math.round(wc.wind_speed_10m)    + ' mph' : '—';
-    const windGust = wc.wind_gusts_10m    != null ? Math.round(wc.wind_gusts_10m)    + ' mph' : null;
-    const windDirS = windDir(wc.wind_direction_10m);
-    const tempF    = wc.temperature_2m    != null ? Math.round(wc.temperature_2m)    + '°F'   : '—';
-    const waveHt   = mc.wave_height       != null ? (mc.wave_height * 3.281).toFixed(1) + ' ft' : '—';
-    const wavePer  = mc.wave_period       != null ? Math.round(mc.wave_period)       + 's'    : '—';
-    const swellHt  = mc.swell_wave_height != null ? (mc.swell_wave_height * 3.281).toFixed(1) + ' ft' : '—';
-    const waveDirS = windDir(mc.wave_direction);
-    const cond     = weatherCodeDesc(wc.weather_code);
-    const waveC    = waveCondition(mc.wave_height != null ? mc.wave_height * 3.281 : null);
+  // ── NOW Conditions ───────────────────────────────────────
+  function renderWxNow(dayIdx) {
+    const { marine, weather, buoy, buoyMeta } = wxData;
+    const isToday = dayIdx === 0;
+    let cells = [];
 
-    const cells = [
-      { icon: '💨', val: windSpd,  label: 'Wind',       sub: windDirS + (windGust ? ' · gusts ' + windGust : '') },
-      { icon: '🌊', val: waveHt,   label: 'Wave Height', sub: waveC.label, valColor: waveC.color },
-      { icon: '⏱',  val: wavePer,  label: 'Wave Period', sub: waveDirS + ' swell' },
-      { icon: '🌀', val: swellHt,  label: 'Swell',       sub: '' },
-      { icon: '🌡', val: tempF,    label: 'Air Temp',    sub: cond },
-    ];
+    if (isToday) {
+      const wc = weather?.current || {};
 
-    // Rough seas alert
-    let alertHtml = '';
-    const waveNum = mc.wave_height != null ? mc.wave_height * 3.281 : 0;
-    const windNum = wc.wind_speed_10m || 0;
-    if (waveNum >= 8 || windNum >= 25) {
-      alertHtml = `<div class="weather-alert">⚠ Rough conditions — waves ${waveHt}, winds ${windSpd}. Check NOAA marine forecast before heading out.</div>`;
+      // ── Wave / swell: prefer real NDBC buoy, fall back to Open-Meteo ──
+      let waveHtStr, waveHtFt, wavePer, swellHt, swellPer, waveDir, sstStr, buoyBadge = '';
+
+      if (buoy && buoy.wvht && buoy.wvht !== 'MM' && buoy.wvht !== 'null') {
+        // NDBC values: wvht in meters, dpd = dominant wave period, mwd = mean wave dir
+        waveHtFt  = parseFloat(buoy.wvht) * 3.281;
+        waveHtStr = waveHtFt.toFixed(1) + ' ft';
+        wavePer   = buoy.dpd  && buoy.dpd  !== 'MM' ? Math.round(parseFloat(buoy.dpd))  + 's' : '—';
+        const swellM = buoy.wvht; // NDBC doesn't separate swell — use total sig wave height
+        swellHt   = buoy.wvht  && buoy.wvht !== 'MM' ? (parseFloat(buoy.wvht)*3.281).toFixed(1) + ' ft' : '—';
+        waveDir   = buoy.mwd   && buoy.mwd  !== 'MM' ? windDir(parseFloat(buoy.mwd)) : '—';
+        sstStr    = buoy.wtmp  && buoy.wtmp !== 'MM' ? (parseFloat(buoy.wtmp) * 9/5 + 32).toFixed(0) + '°F' : null;
+        buoyBadge = `<div style="display:inline-block;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--green);background:var(--green-lt);border:1px solid rgba(92,122,62,0.3);border-radius:4px;padding:2px 7px;margin-top:4px;text-transform:uppercase">📡 NDBC ${buoyMeta?.id} · ${buoyMeta?.name} · ${haverDist(wxCoords.lat,wxCoords.lng,buoyMeta?.lat,buoyMeta?.lng).toFixed(0)} mi away</div>`;
+      } else {
+        // Fallback to Open-Meteo marine hourly (get index closest to now)
+        const mh = marine?.hourly || {};
+        const nowMs = Date.now();
+        const idx = mh.time ? mh.time.findIndex(t => new Date(t).getTime() > nowMs) : -1;
+        const i   = Math.max(0, idx - 1);
+        waveHtFt  = mh.wave_height?.[i] != null ? mh.wave_height[i] * 3.281 : null;
+        waveHtStr = waveHtFt != null ? waveHtFt.toFixed(1) + ' ft' : '—';
+        wavePer   = mh.wave_period?.[i] != null ? Math.round(mh.wave_period[i]) + 's' : '—';
+        swellHt   = mh.swell_wave_height?.[i] != null ? (mh.swell_wave_height[i]*3.281).toFixed(1) + ' ft' : '—';
+        waveDir   = windDir(mh.wave_direction?.[i]);
+        sstStr    = null;
+        buoyBadge = `<div style="display:inline-block;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--muted);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:2px 7px;margin-top:4px;text-transform:uppercase">⚠ No nearby buoy — using model forecast</div>`;
+      }
+
+      // ── Wind: always from Open-Meteo (more accurate for offshore wind) ──
+      const windSpd  = wc.wind_speed_10m  != null ? Math.round(wc.wind_speed_10m)  + ' mph' : '—';
+      const windGust = wc.wind_gusts_10m  != null ? Math.round(wc.wind_gusts_10m)  + ' mph' : null;
+      const tempF    = wc.temperature_2m  != null ? Math.round(wc.temperature_2m)  + '°F'   : '—';
+      const humidity = wc.relative_humidity_2m != null ? wc.relative_humidity_2m   + '%'    : '—';
+      const uv       = wc.uv_index        != null ? wc.uv_index.toString()                  : '—';
+      const vis      = wc.visibility      != null ? (wc.visibility/1609).toFixed(1) + ' mi' : '—';
+      const waveR    = waveRating(waveHtFt);
+
+      cells = [
+        { icon: '🌡', val: tempF,    label: 'Air Temp',    sub: wxDesc(wc.weather_code) },
+        { icon: '💨', val: windSpd,  label: 'Wind',        sub: windDir(wc.wind_direction_10m)+' '+windArrow(wc.wind_direction_10m)+(windGust?' · gusts '+windGust:'') },
+        { icon: '🌊', val: waveHtStr,label: 'Wave Height', sub: waveR.label + ' · sig. wave ht', valColor: waveR.color },
+        { icon: '⏱',  val: wavePer,  label: 'Wave Period', sub: 'secs between sets' },
+        { icon: '🌀', val: swellHt,  label: 'Swell / Sea', sub: waveDir + ' direction' },
+        { icon: '☀️', val: uv,       label: 'UV Index',    sub: uv!=='—'?(+uv>=8?'Very High':+uv>=6?'High':+uv>=3?'Moderate':'Low'):'' },
+        { icon: '💧', val: humidity, label: 'Humidity',    sub: '' },
+        { icon: '👁',  val: vis,      label: 'Visibility',  sub: '' },
+      ];
+      if (sstStr) cells.push({ icon: '🌡', val: sstStr, label: 'Water Temp', sub: 'measured at buoy' });
+
+      document.getElementById('wxNowGrid').innerHTML =
+        cells.map(c => `
+          <div class="wx-now-cell">
+            <div class="wx-now-icon">${c.icon}</div>
+            <div class="wx-now-val"${c.valColor?' style="color:'+c.valColor+'"':''}>${c.val}</div>
+            <div class="wx-now-label">${c.label}</div>
+            ${c.sub?`<div class="wx-now-sub">${c.sub}</div>`:''}
+          </div>`).join('') + `<div style="grid-column:1/-1">${buoyBadge}</div>`;
+
+    } else {
+      // Future day — use Open-Meteo daily forecast (same as before)
+      const wd = weather?.daily || {};
+      const md = marine?.daily  || {};
+      const hi      = wd.temperature_2m_max?.[dayIdx]  != null ? Math.round(wd.temperature_2m_max[dayIdx]) + '°F' : '—';
+      const lo      = wd.temperature_2m_min?.[dayIdx]  != null ? Math.round(wd.temperature_2m_min[dayIdx]) + '°F' : '—';
+      const wind    = wd.wind_speed_10m_max?.[dayIdx]  != null ? Math.round(wd.wind_speed_10m_max[dayIdx]) + ' mph' : '—';
+      const wdir    = windDir(wd.wind_direction_10m_dominant?.[dayIdx]);
+      const waveHtFt= md.wave_height_max?.[dayIdx]     != null ? md.wave_height_max[dayIdx] * 3.281 : null;
+      const waveHt  = waveHtFt != null ? waveHtFt.toFixed(1) + ' ft' : '—';
+      const swellHt = md.swell_wave_height_max?.[dayIdx]!= null ? (md.swell_wave_height_max[dayIdx]*3.281).toFixed(1)+' ft' : '—';
+      const wavePer = md.wave_period_max?.[dayIdx]     != null ? Math.round(md.wave_period_max[dayIdx]) + 's' : '—';
+      const uv      = wd.uv_index_max?.[dayIdx]        != null ? wd.uv_index_max[dayIdx].toString() : '—';
+      const precip  = wd.precipitation_sum?.[dayIdx]   != null ? wd.precipitation_sum[dayIdx].toFixed(1) + '"' : '0"';
+      const sunrise = wd.sunrise?.[dayIdx] ? new Date(wd.sunrise[dayIdx]).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}) : '—';
+      const sunset  = wd.sunset?.[dayIdx]  ? new Date(wd.sunset[dayIdx]).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}) : '—';
+      const code    = wd.weather_code?.[dayIdx];
+      const waveR   = waveRating(waveHtFt);
+      cells = [
+        { icon: '🌡', val: hi,      label: 'High Temp',   sub: 'Low: '+lo },
+        { icon: '💨', val: wind,    label: 'Max Wind',    sub: wdir+' '+windArrow(wd.wind_direction_10m_dominant?.[dayIdx]) },
+        { icon: '🌊', val: waveHt,  label: 'Max Waves',   sub: waveR.label, valColor: waveR.color },
+        { icon: '🌀', val: swellHt, label: 'Max Swell',   sub: '' },
+        { icon: '⏱',  val: wavePer, label: 'Wave Period', sub: 'secs' },
+        { icon: '☀️', val: uv,      label: 'UV Index',    sub: uv!=='—'?(+uv>=8?'Very High':+uv>=6?'High':+uv>=3?'Moderate':'Low'):'' },
+        { icon: '🌧', val: precip,  label: 'Precip',      sub: wxDesc(code) },
+        { icon: '🌅', val: sunrise, label: 'Sunrise',     sub: 'Sunset: '+sunset },
+      ];
+      document.getElementById('wxNowGrid').innerHTML = cells.map(c => `
+        <div class="wx-now-cell">
+          <div class="wx-now-icon">${c.icon}</div>
+          <div class="wx-now-val"${c.valColor?' style="color:'+c.valColor+'"':''}>${c.val}</div>
+          <div class="wx-now-label">${c.label}</div>
+          ${c.sub?`<div class="wx-now-sub">${c.sub}</div>`:''}
+        </div>`).join('');
     }
 
-    document.getElementById('weatherGrid').innerHTML =
-      alertHtml +
-      `<div class="weather-grid">` +
-      cells.map(c => `<div class="weather-cell">
-        <div class="weather-cell-icon">${c.icon}</div>
-        <div class="weather-cell-val" style="${c.valColor ? 'color:' + c.valColor : ''}">${c.val}</div>
-        <div class="weather-cell-label">${c.label}</div>
-        ${c.sub ? `<div class="weather-cell-sub">${c.sub}</div>` : ''}
-      </div>`).join('') +
-      `</div>`;
+    showWxSection('wxNowSection');
+  }
 
-    // Reassign grid to outer content div (alertHtml is outside .weather-grid)
-    const grid = document.getElementById('weatherGrid');
-    grid.innerHTML = alertHtml + `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-bottom:10px">` +
-      cells.map(c => `<div class="weather-cell">
-        <div class="weather-cell-icon">${c.icon}</div>
-        <div class="weather-cell-val"${c.valColor ? ' style="color:' + c.valColor + '"' : ''}>${c.val}</div>
-        <div class="weather-cell-label">${c.label}</div>
-        ${c.sub ? `<div class="weather-cell-sub">${c.sub}</div>` : ''}
-      </div>`).join('') + `</div>`;
+  // ── Fishing Index
 
-    grid.style.display = 'block';
+  // ── Fishing Index ────────────────────────────────────────
+  function renderWxFishingIndex(dayIdx) {
+    const { marine, weather, buoy } = wxData;
+    const wd = weather?.daily || {};
+    const md = marine?.daily  || {};
+    const isToday = dayIdx === 0;
 
+    // Pull values — today prefers NDBC buoy observed, future uses daily forecast
+    let windSpd, waveHtFt, code, temp, windDeg;
+    if (isToday) {
+      const wc = weather?.current || {};
+      const mc = marine?.current  || {};
+      windSpd  = buoy?.windMph   ?? wc.wind_speed_10m    ?? 0;
+      waveHtFt = buoy?.wvhtFt    ?? mc._wvhtFt            ?? 0;
+      code     = wc.weather_code ?? 0;
+      temp     = buoy?.atmpF     ?? wc.temperature_2m     ?? 68;
+      windDeg  = buoy?.windDir   ?? wc.wind_direction_10m;
+    } else {
+      windSpd  = wd.wind_speed_10m_max?.[dayIdx]  || 0;
+      waveHtFt = md._wvhtFtMax?.[dayIdx]           ?? 0;
+      code     = wd.weather_code?.[dayIdx]         || 0;
+      temp     = wd.temperature_2m_max?.[dayIdx]   || 68;
+      windDeg  = wd.wind_direction_10m_dominant?.[dayIdx];
+    }
+
+    // Moon age offset for future days
+    const futureMoonAge = (getMoonAge() + dayIdx) % 29.53;
+    const moonPct = futureMoonAge / 29.53;
+    const nearFull = moonPct > 0.85 || moonPct < 0.15;
+    const nearNew  = moonPct > 0.45 && moonPct < 0.55;
+
+    const sc = calcFishScore(windSpd, waveHtFt, code, temp, moonPct);
+    const color  = scoreColor(sc.total);
+    const rating = sc.total >= 8 ? 'Excellent' : sc.total >= 6 ? 'Good' : sc.total >= 4 ? 'Fair' : 'Poor';
+    const summary = sc.total >= 8
+      ? 'Conditions look great — low wind, manageable seas, and favorable weather. Get out there!'
+      : sc.total >= 6
+      ? 'Decent conditions with some factors to watch. Check the hourly breakdown before departure.'
+      : sc.total >= 4
+      ? 'Marginal conditions. Experienced anglers may still find success — monitor closely.'
+      : 'Challenging conditions. Consider postponing or fishing protected inshore waters.';
+
+    const futureMoonEmoji = getMoonEmojiForAge(futureMoonAge);
+
+    document.getElementById('wxFishingIndex').innerHTML = `
+      <div class="wx-fish-score-row">
+        <div class="wx-fish-score-circle" style="border-color:${color}">
+          <div class="wx-fish-score-num" style="color:${color}">${sc.total}</div>
+          <div class="wx-fish-score-lbl" style="color:${color}">/ 10</div>
+        </div>
+        <div class="wx-fish-score-desc">
+          <div class="wx-fish-rating">${rating} Conditions</div>
+          <div class="wx-fish-summary">${summary}</div>
+        </div>
+      </div>
+      <div class="wx-fish-factors">
+        <div class="wx-fish-factor">
+          <span class="wx-fish-factor-icon">💨</span>
+          <span class="wx-fish-factor-text">Wind ${Math.round(windSpd)} mph ${windDir(windDeg)}</span>
+          <span class="wx-fish-factor-badge badge-${scoreBadge(sc.windScore)}">${scoreBadge(sc.windScore)}</span>
+        </div>
+        <div class="wx-fish-factor">
+          <span class="wx-fish-factor-icon">🌊</span>
+          <span class="wx-fish-factor-text">Seas ${waveHtFt.toFixed(1)} ft · ${waveRating(waveHtFt).label}</span>
+          <span class="wx-fish-factor-badge badge-${scoreBadge(sc.waveScore)}">${scoreBadge(sc.waveScore)}</span>
+        </div>
+        <div class="wx-fish-factor">
+          <span class="wx-fish-factor-icon">${wxEmoji(code)}</span>
+          <span class="wx-fish-factor-text">${wxDesc(code) || 'Clear skies'}</span>
+          <span class="wx-fish-factor-badge badge-${scoreBadge(sc.skyScore)}">${scoreBadge(sc.skyScore)}</span>
+        </div>
+        <div class="wx-fish-factor">
+          <span class="wx-fish-factor-icon">${futureMoonEmoji}</span>
+          <span class="wx-fish-factor-text">Moon · ${nearFull || nearNew ? 'Peak feeding window' : 'Moderate activity'}</span>
+          <span class="wx-fish-factor-badge badge-${nearFull||nearNew?'good':'fair'}">${nearFull||nearNew?'good':'fair'}</span>
+        </div>
+      </div>`;
+
+    showWxSection('wxIndexSection');
+  }
+
+  // ── 7-Day Forecast (with mini score badges) ──────────────
+  function renderWxForecast() {
+    const { marine, weather } = wxData;
+    const wd = weather?.daily || {};
+    const md = marine?.daily  || {};
+    if (!wd.time?.length) return;
+
+    const moonAge = getMoonAge();
+
+    const days = wd.time.map((dateStr, i) => {
+      const d      = new Date(dateStr + 'T12:00:00');
+      const dow    = i === 0 ? 'Today' : d.toLocaleDateString('en-US', { weekday: 'short' });
+      const hi     = wd.temperature_2m_max?.[i]  != null ? Math.round(wd.temperature_2m_max[i])  + '°' : '—';
+      const lo     = wd.temperature_2m_min?.[i]  != null ? Math.round(wd.temperature_2m_min[i])  + '°' : '';
+      const code   = wd.weather_code?.[i];
+      const wind   = wd.wind_speed_10m_max?.[i]  != null ? Math.round(wd.wind_speed_10m_max[i])  + ' mph' : '—';
+      const wave   = md._wvhtFtMax?.[i]          != null ? md._wvhtFtMax[i].toFixed(1) + 'ft' : '—';
+      const waveNum= md._wvhtFtMax?.[i]          ?? 0;
+      const windNum= wd.wind_speed_10m_max?.[i]  || 0;
+      const temp   = wd.temperature_2m_max?.[i]  || 68;
+      const futureMoonPct = ((moonAge + i) % 29.53) / 29.53;
+      const sc     = calcFishScore(windNum, waveNum, code, temp, futureMoonPct);
+      const sColor = scoreColor(sc.total);
+
+      return `<div class="wx-forecast-day ${i===0?'today':''}" onclick="selectWxDay(${i})" title="Tap to view full forecast">
+        <div class="wx-fc-dow">${dow}</div>
+        <div class="wx-fc-icon">${wxEmoji(code)}</div>
+        <div class="wx-fc-hi">${hi}</div>
+        ${lo ? `<div class="wx-fc-lo">${lo}</div>` : ''}
+        ${wave !== '—' ? `<div class="wx-fc-wave">🌊 ${wave}</div>` : ''}
+        ${wind !== '—' ? `<div class="wx-fc-wind">💨 ${wind}</div>` : ''}
+        <div class="wx-fc-score" style="color:${sColor};border-color:${sColor}">${sc.total}</div>
+      </div>`;
+    });
+
+    document.getElementById('wxForecastRow').innerHTML = days.join('');
+    showWxSection('wxForecastSection');
+
+    // Auto-select today
+    selectWxDay(0);
+  }
+
+  // ── Hourly Breakdown ─────────────────────────────────────
+  function renderWxHourly(dayIdx) {
+    const { marine, weather } = wxData;
+    const wh = weather?.hourly || {};
+    const mh = marine?.hourly  || {};
+    if (!wh.time?.length) return;
+
+    // Find the hour range for the selected day
+    const wd = weather?.daily || {};
+    const dateStr = wd.time?.[dayIdx];
+    if (!dateStr) return;
+
+    const dayStart = new Date(dateStr + 'T00:00:00').getTime();
+    const dayEnd   = dayStart + 24 * 3600 * 1000;
+    const nowMs    = Date.now();
+
+    const indices = wh.time.map((t,i) => ({ t: new Date(t).getTime(), i }))
+      .filter(x => x.t >= dayStart && x.t < dayEnd);
+
+    if (!indices.length) { showWxSection('wxHourlySection'); return; }
+
+    const cells = indices.map(({ t, i }) => {
+      const d      = new Date(t);
+      const hr     = d.toLocaleTimeString('en-US', { hour: 'numeric', hour12: true });
+      const isNow  = dayIdx === 0 && Math.abs(t - nowMs) < 3600000;
+      const wind   = wh.wind_speed_10m?.[i]       != null ? Math.round(wh.wind_speed_10m[i])    + ' mph' : '—';
+      const wdir   = windDir(wh.wind_direction_10m?.[i]);
+      const warr   = windArrow(wh.wind_direction_10m?.[i]);
+      const wave   = mh._wvhtFt?.[i]               != null ? mh._wvhtFt[i].toFixed(1) + 'ft' : '—';
+      const code   = wh.weather_code?.[i];
+      const precip = wh.precipitation_probability?.[i] != null ? wh.precipitation_probability[i] + '%' : '';
+      return `<div class="wx-hourly-cell ${isNow ? 'now' : ''}">
+        <div class="wx-hr-time">${isNow ? 'Now' : hr}</div>
+        <div class="wx-hr-icon">${wxEmoji(code)}</div>
+        <div class="wx-hr-wind">${wind}</div>
+        <div class="wx-hr-dir">${wdir} ${warr}</div>
+        <div class="wx-hr-wave">${wave}</div>
+        ${precip ? `<div class="wx-hr-dir" style="color:var(--teal)">${precip}💧</div>` : ''}
+      </div>`;
+    });
+
+    document.getElementById('wxHourlyScroll').innerHTML = cells.join('');
+
+    if (dayIdx === 0) {
+      setTimeout(() => {
+        const nowEl = document.querySelector('.wx-hourly-cell.now');
+        if (nowEl) nowEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }, 100);
+    }
+    showWxSection('wxHourlySection');
+  }
+
+  // ── Tides ────────────────────────────────────────────────
+  async function renderWxTides(dayIdx) {
+    const wd = wxData?.weather?.daily || {};
+    const dateStr = wd.time?.[dayIdx];
+    const refDate = dateStr ? new Date(dateStr + 'T12:00:00') : new Date();
+
+    // Today: try real NOAA tides first, then fall back to harmonic estimate
+    if (dayIdx === 0 && wxData?.tides?.length) {
+      renderWxTidesFromNOAA(wxData.tides, refDate);
+    } else if (dayIdx > 0) {
+      // Future days: fetch real NOAA tide predictions for that date
+      const tideStation = wxData?.tideStation;
+      if (tideStation) {
+        const d = new Date(dateStr + 'T12:00:00');
+        const dateStrFmt = d.getFullYear().toString() +
+          String(d.getMonth()+1).padStart(2,'0') +
+          String(d.getDate()).padStart(2,'0');
+        try {
+          const predictions = await fetchTidePredictions(tideStation.id, dateStrFmt);
+          if (predictions.length) {
+            renderWxTidesFromNOAA(predictions, refDate);
+            return;
+          }
+        } catch(e) {}
+      }
+      // Fallback to harmonic model
+      renderWxTidesEstimated(refDate, dayIdx === 0);
+    } else {
+      renderWxTidesEstimated(refDate, true);
+    }
+
+    showWxSection('wxTidesSection');
+  }
+
+  function renderWxTidesFromNOAA(predictions, refDate) {
+    // predictions: [{ t: "2025-03-19 06:23", v: "3.2", type: "H" }, ...]
+    const events = predictions.map(p => ({
+      type: p.type === 'H' ? 'high' : 'low',
+      time: new Date(p.t).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
+      height: parseFloat(p.v).toFixed(1) + ' ft',
+      v: parseFloat(p.v),
+      ms: new Date(p.t).getTime()
+    }));
+
+    // Draw chart from NOAA points using spline interpolation
+    const canvas = document.getElementById('wxTideCanvas');
+    drawTideChartFromPoints(canvas, events, refDate);
+
+    const badge = `<div style="display:inline-block;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--green);background:var(--green-lt);border:1px solid rgba(92,122,62,0.3);border-radius:4px;padding:2px 7px;margin-bottom:8px;text-transform:uppercase">📡 NOAA Tides &amp; Currents · ${wxData?.tideStation?.name}</div>`;
+
+    document.getElementById('wxTideEvents').innerHTML = badge +
+      `<div class="wx-tide-events">` +
+      events.map(e => `
+        <div class="wx-tide-event">
+          <div class="wx-tide-type ${e.type}">${e.type === 'high' ? '▲ High Tide' : '▼ Low Tide'}</div>
+          <div class="wx-tide-time">${e.time}</div>
+          <div class="wx-tide-ht">${e.height}</div>
+        </div>`).join('') + '</div>';
+
+    showWxSection('wxTidesSection');
+  }
+
+  function renderWxTidesEstimated(refDate, showNow) {
+    const events = estimateTides(refDate);
+    const canvas  = document.getElementById('wxTideCanvas');
+    drawTideChart(canvas, refDate, showNow);
+    const badge = `<div style="display:inline-block;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--muted);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:2px 7px;margin-bottom:8px;text-transform:uppercase">~ Harmonic estimate — verify at tidesandcurrents.noaa.gov</div>`;
+    document.getElementById('wxTideEvents').innerHTML = badge +
+      `<div class="wx-tide-events">` +
+      (events.length ? events.map(e => `
+        <div class="wx-tide-event">
+          <div class="wx-tide-type ${e.type}">${e.type === 'high' ? '▲ High Tide' : '▼ Low Tide'}</div>
+          <div class="wx-tide-time">${e.time}</div>
+          <div class="wx-tide-ht">${e.height}</div>
+        </div>`).join('') : '<div style="color:var(--muted);font-size:0.8rem;padding:8px">Tide data unavailable</div>') +
+      '</div>';
+    showWxSection('wxTidesSection');
+  }
+
+  function drawTideChartFromPoints(canvas, events, refDate) {
+    // Interpolate a smooth curve from the H/L points using cosine interpolation
+    const ctx = canvas.getContext('2d');
+    const W = canvas.offsetWidth || 600, H = 120;
+    canvas.width = W * (window.devicePixelRatio||1);
+    canvas.height = H * (window.devicePixelRatio||1);
+    ctx.scale(window.devicePixelRatio||1, window.devicePixelRatio||1);
+    ctx.clearRect(0,0,W,H);
+
+    if (!events.length) return;
+
+    const dayStart = new Date(refDate); dayStart.setHours(0,0,0,0);
+    const dayEnd   = new Date(refDate); dayEnd.setHours(24,0,0,0);
+
+    // Extend with prev/next day estimates to avoid edge artifacts
+    const allPts = [...events].sort((a,b) => a.ms - b.ms);
+
+    // Generate smooth height at time t using cosine interpolation between hi/lo points
+    function heightAtMs(ms) {
+      if (allPts.length < 2) return allPts[0]?.v || 2.5;
+      for (let i = 0; i < allPts.length - 1; i++) {
+        if (ms >= allPts[i].ms && ms <= allPts[i+1].ms) {
+          const frac = (ms - allPts[i].ms) / (allPts[i+1].ms - allPts[i].ms);
+          const cosFrac = (1 - Math.cos(frac * Math.PI)) / 2;
+          return allPts[i].v + (allPts[i+1].v - allPts[i].v) * cosFrac;
+        }
+      }
+      return ms < allPts[0].ms ? allPts[0].v : allPts[allPts.length-1].v;
+    }
+
+    const pts = 288;
+    const vals = Array.from({length: pts+1}, (_,i) => {
+      const t = dayStart.getTime() + (i/pts) * (dayEnd.getTime() - dayStart.getTime());
+      return heightAtMs(t);
+    });
+
+    const minV = Math.min(...vals) - 0.1;
+    const maxV = Math.max(...vals) + 0.1;
+    const sY = v => H - 16 - ((v-minV)/(maxV-minV))*(H-32);
+    const sX = i => (i/pts)*W;
+
+    const grad = ctx.createLinearGradient(0,0,0,H);
+    grad.addColorStop(0,'rgba(13,148,136,0.22)'); grad.addColorStop(1,'rgba(13,148,136,0.02)');
+    ctx.beginPath(); ctx.moveTo(sX(0), sY(vals[0]));
+    for (let i=1;i<=pts;i++) ctx.lineTo(sX(i), sY(vals[i]));
+    ctx.lineTo(W,H); ctx.lineTo(0,H); ctx.closePath();
+    ctx.fillStyle = grad; ctx.fill();
+
+    ctx.beginPath(); ctx.moveTo(sX(0), sY(vals[0]));
+    for (let i=1;i<=pts;i++) ctx.lineTo(sX(i), sY(vals[i]));
+    ctx.strokeStyle='rgba(13,148,136,0.8)'; ctx.lineWidth=2; ctx.stroke();
+
+    // Plot H/L markers
+    events.forEach(e => {
+      const fracOfDay = (e.ms - dayStart.getTime()) / (dayEnd.getTime() - dayStart.getTime());
+      if (fracOfDay < 0 || fracOfDay > 1) return;
+      const x = fracOfDay * W, y = sY(e.v);
+      ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI*2);
+      ctx.fillStyle = e.type === 'high' ? 'rgba(13,148,136,0.9)' : 'rgba(192,90,42,0.9)';
+      ctx.fill();
+    });
+
+    // Now marker
     const now = new Date();
-    const locStr = lat.toFixed(2) + ', ' + lng.toFixed(2);
-    document.getElementById('weatherMeta').textContent =
-      'Updated ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) +
-      ' · ' + locStr + ' · Open-Meteo';
+    if (now >= dayStart && now < dayEnd) {
+      const fracNow = (now.getTime() - dayStart.getTime()) / (dayEnd.getTime() - dayStart.getTime());
+      const nx = fracNow * W, ny = sY(heightAtMs(now.getTime()));
+      ctx.beginPath(); ctx.arc(nx, ny, 5, 0, Math.PI*2);
+      ctx.fillStyle = '#b8943f'; ctx.fill();
+      ctx.fillStyle = '#b8943f'; ctx.font = '9px monospace';
+      ctx.textAlign = 'center'; ctx.fillText('NOW', nx, ny-10);
+    }
+
+    ctx.fillStyle='rgba(74,98,116,0.5)'; ctx.font='8px monospace';
+    [0,6,12,18,24].forEach(hr => {
+      const x=(hr/24)*W, label=hr===0?'12a':hr===6?'6a':hr===12?'12p':hr===18?'6p':'12a';
+      ctx.textAlign=hr===0?'left':hr===24?'right':'center';
+      ctx.fillText(label,x,H-2);
+    });
   }
 
-  function showWeatherError(msg) {
-    document.getElementById('weatherLoading').style.display = 'none';
-    document.getElementById('weatherEmpty').style.display   = 'block';
-    document.getElementById('weatherEmpty').innerHTML =
-      `<div style="font-family:'DM Mono', monospace;font-size:10px;color:var(--rust);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">⚠ ${msg}</div>
-       <button class="btn-weather-locate" onclick="fetchWeather()">Try Again</button>`;
+  function estimateTides(date) {
+    const t   = date.getTime() / 3600000;
+    const M2  = 12.4206, S2 = 12.0, K1 = 23.9345, O1 = 25.8194;
+    const phi1 = 2.1, phi2 = 1.3, phi3 = 0.8, phi4 = 1.9;
+    const A1 = 2.8, A2 = 0.6, A3 = 1.4, A4 = 0.8;
+    const heightAt = h =>
+      A1 * Math.cos(2*Math.PI*h/M2+phi1) + A2 * Math.cos(2*Math.PI*h/S2+phi2) +
+      A3 * Math.cos(2*Math.PI*h/K1+phi3) + A4 * Math.cos(2*Math.PI*h/O1+phi4) + 2.8;
+    const startH = Math.floor(t / 24) * 24;
+    const events = [];
+    let prev = heightAt(startH);
+    for (let i = 1; i <= 1440; i++) {
+      const h   = startH + i / 60;
+      const cur = heightAt(h);
+      const nxt = heightAt(h + 1/60);
+      if (cur > prev && cur >= nxt) {
+        const d = new Date(h * 3600000);
+        events.push({ type: 'high', t: h, height: cur.toFixed(1)+' ft',
+          time: d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}) });
+      } else if (cur < prev && cur <= nxt) {
+        const d = new Date(h * 3600000);
+        events.push({ type: 'low', t: h, height: cur.toFixed(1)+' ft',
+          time: d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}) });
+      }
+      prev = cur;
+    }
+    return events.filter(e => {
+      const d = new Date(e.t * 3600000);
+      return d.getDate() === date.getDate() && d.getMonth() === date.getMonth();
+    }).slice(0, 5);
   }
 
-  // ── Species Autocomplete ──────────────────────────────────
+  function drawTideChart(canvas, date, showNow) {
+    const ctx  = canvas.getContext('2d');
+    const W    = canvas.offsetWidth || 600;
+    const H    = 120;
+    canvas.width  = W * (window.devicePixelRatio || 1);
+    canvas.height = H * (window.devicePixelRatio || 1);
+    ctx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
+    ctx.clearRect(0, 0, W, H);
+
+    const M2=12.4206,S2=12.0,K1=23.9345,O1=25.8194;
+    const phi1=2.1,phi2=1.3,phi3=0.8,phi4=1.9;
+    const A1=2.8,A2=0.6,A3=1.4,A4=0.8;
+    const t0 = new Date(date); t0.setHours(0,0,0,0);
+    const baseH = t0.getTime() / 3600000;
+    const heightAt = h =>
+      A1*Math.cos(2*Math.PI*h/M2+phi1)+A2*Math.cos(2*Math.PI*h/S2+phi2)+
+      A3*Math.cos(2*Math.PI*h/K1+phi3)+A4*Math.cos(2*Math.PI*h/O1+phi4)+2.8;
+
+    const pts  = 288;
+    const vals = Array.from({length:pts+1}, (_,i) => heightAt(baseH + i*(24/pts)));
+    const minV = Math.min(...vals), maxV = Math.max(...vals);
+    const sY   = v => H - 16 - ((v-minV)/(maxV-minV))*(H-32);
+    const sX   = i => (i/pts)*W;
+
+    const grad = ctx.createLinearGradient(0,0,0,H);
+    grad.addColorStop(0,'rgba(13,148,136,0.22)');
+    grad.addColorStop(1,'rgba(13,148,136,0.02)');
+
+    ctx.beginPath();
+    ctx.moveTo(sX(0), sY(vals[0]));
+    for (let i=1;i<=pts;i++) ctx.lineTo(sX(i), sY(vals[i]));
+    ctx.lineTo(W,H); ctx.lineTo(0,H); ctx.closePath();
+    ctx.fillStyle = grad; ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(sX(0), sY(vals[0]));
+    for (let i=1;i<=pts;i++) ctx.lineTo(sX(i), sY(vals[i]));
+    ctx.strokeStyle = 'rgba(13,148,136,0.8)';
+    ctx.lineWidth = 2; ctx.stroke();
+
+    if (showNow) {
+      const now = new Date();
+      const nowFrac  = (now.getHours()*60+now.getMinutes())/1440;
+      const nowPtIdx = Math.round(nowFrac*pts);
+      const nowX = sX(nowPtIdx), nowY = sY(vals[nowPtIdx]);
+      ctx.beginPath(); ctx.arc(nowX, nowY, 5, 0, Math.PI*2);
+      ctx.fillStyle = '#b8943f'; ctx.fill();
+      ctx.fillStyle = '#b8943f'; ctx.font = '9px monospace';
+      ctx.textAlign = 'center'; ctx.fillText('NOW', nowX, nowY-10);
+    }
+
+    ctx.fillStyle = 'rgba(74,98,116,0.5)'; ctx.font = '8px monospace';
+    [0,6,12,18,24].forEach(hr => {
+      const x = (hr/24)*W;
+      const label = hr===0?'12a':hr===6?'6a':hr===12?'12p':hr===18?'6p':'12a';
+      ctx.textAlign = hr===0?'left':hr===24?'right':'center';
+      ctx.fillText(label, x, H-2);
+    });
+  }
+
+  // ── Moon Phase ───────────────────────────────────────────
+  function getMoonAge() {
+    const knownNew = new Date('2025-01-29T12:36:00Z').getTime();
+    const cycleMs  = 29.530588853 * 24 * 3600 * 1000;
+    return ((Date.now()-knownNew) % cycleMs) / cycleMs * 29.530588853;
+  }
+
+  function getMoonEmojiForAge(age) {
+    const p = age / 29.53;
+    if (p<0.03||p>0.97) return '🌑';
+    if (p<0.22)         return '🌒';
+    if (p<0.28)         return '🌓';
+    if (p<0.47)         return '🌔';
+    if (p<0.53)         return '🌕';
+    if (p<0.72)         return '🌖';
+    if (p<0.78)         return '🌗';
+    return                     '🌘';
+  }
+
+  function getMoonEmoji()     { return getMoonEmojiForAge(getMoonAge()); }
+
+  function getMoonPhaseName() {
+    const p = getMoonAge() / 29.53;
+    if (p<0.03||p>0.97) return 'New Moon';
+    if (p<0.22)         return 'Waxing Crescent';
+    if (p<0.28)         return 'First Quarter';
+    if (p<0.47)         return 'Waxing Gibbous';
+    if (p<0.53)         return 'Full Moon';
+    if (p<0.72)         return 'Waning Gibbous';
+    if (p<0.78)         return 'Last Quarter';
+    return                     'Waning Crescent';
+  }
+
+  function renderWxMoon() {
+    const age   = getMoonAge();
+    const pct   = age / 29.53;
+    const emoji = getMoonEmoji();
+    const name  = getMoonPhaseName();
+    const daysToFull = pct < 0.5 ? ((0.5-pct)*29.53).toFixed(0) : null;
+    const daysToNew  = pct >= 0.5 ? ((1-pct)*29.53).toFixed(0)  : null;
+    const isGood = pct<0.1||pct>0.9||(pct>0.45&&pct<0.55);
+    const tip = isGood
+      ? 'New and full moons create stronger tidal swings, increasing bait fish activity and feeding windows. Prime time to target pelagics.'
+      : 'Quarter moons produce moderate tidal movement. Focus on early morning and late afternoon transitions for best results.';
+
+    document.getElementById('wxMoonCard').innerHTML = `
+      <div class="wx-moon-emoji">${emoji}</div>
+      <div class="wx-moon-info">
+        <div class="wx-moon-phase-name">${name}</div>
+        <div class="wx-moon-detail">${age.toFixed(1)} days into lunar cycle</div>
+        ${daysToFull?`<div class="wx-moon-detail">Full moon in ${daysToFull} days</div>`:''}
+        ${daysToNew ?`<div class="wx-moon-detail">New moon in ${daysToNew} days</div>`:''}
+        <div class="wx-moon-fishing-tip">${tip}</div>
+      </div>`;
+    showWxSection('wxMoonSection');
+  }
+
+  // ── SST ──────────────────────────────────────────────────
+  function renderWxSST() {
+    const { buoy, buoyMeta } = wxData;
+
+    // Prefer real NDBC buoy water temp observation
+    let sstNum = null, srcLabel = '', srcNote = '';
+    if (buoy?.wtmpF != null) {
+      sstNum   = buoy.wtmpF;
+      srcLabel = `Buoy ${buoy.buoyId} — ${buoyMeta?.name || ''}`;
+      srcNote  = 'Live observed water temperature';
+    } else {
+      // Fall back to seasonal climatology for SoCal — much more accurate than air-temp offset
+      const month = new Date().getMonth(); // 0=Jan
+      const SOCAL_SST_F = [58,58,59,60,62,64,66,68,68,66,63,60]; // avg SoCal SST by month
+      sstNum   = SOCAL_SST_F[month];
+      srcLabel = document.getElementById('wxLocText').textContent;
+      srcNote  = 'SoCal seasonal average — buoy data unavailable';
+    }
+
+    const sst  = sstNum.toFixed(1);
+    const tip  = sstNum >= 68
+      ? 'Warm water! Excellent conditions for yellowfin tuna, dorado, and wahoo. Look for temperature breaks and blue water.'
+      : sstNum >= 65
+      ? 'Good SST for yellowtail, bonito, and white seabass. Check for temp breaks near kelp beds and offshore banks.'
+      : sstNum >= 62
+      ? 'Moderate water temps. Yellowtail can still be active near kelp. White seabass prime season.'
+      : 'Cool water favors rockfish, lingcod, and halibut. Yellowtail action picks up as water warms past 64°F.';
+    const color = sstNum>=68?'var(--rust)':sstNum>=65?'var(--gold)':sstNum>=60?'var(--teal)':'#4daa78';
+
+    document.getElementById('wxSSTCard').innerHTML = `
+      <div class="wx-sst-temp" style="color:${color}">${sst}°F</div>
+      <div class="wx-sst-info">
+        <div class="wx-sst-label">${srcLabel}</div>
+        <div class="wx-sst-tip">${tip}</div>
+        <div class="wx-sst-tip" style="margin-top:6px;opacity:0.6;font-size:0.75rem">${srcNote}</div>
+      </div>`;
+    showWxSection('wxSSTSection');
+  }
+
+  // Legacy aliases
+  function fetchWeather()           { switchTab('weather'); }
+  function loadWeatherData()        {}
+  function renderWeather()          {}
+  function showWeatherError()       {}
+  function weatherCodeDesc(c)       { return wxDesc(c); }
+  function waveCondition(h)         { return waveRating(h); }
+  
+
+    // ── Species Autocomplete ──────────────────────────────────
   const CAT_LABELS = { pelagic: 'Pelagic', nearshore: 'Nearshore', bottom: 'Bottom Fish', tuna: 'Tuna & Billfish' };
   let suggestIndex = -1;
 
